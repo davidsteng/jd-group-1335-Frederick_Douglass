@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/gerhardsletten/react-reader.git"
   },
-  "homepage": ".",
+  "homepage": "https://gerhardsletten.github.io/react-reader",
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.14.8",
