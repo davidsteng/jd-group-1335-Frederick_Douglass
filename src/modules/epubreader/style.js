@@ -22,6 +22,12 @@ const EBookReaderStyles = {
     textAlign: 'center',
     color: '#333'
   },
+  homeButton: {
+    position: 'absolute',
+    right: 50,
+    top: 20,
+    fontSize: 12
+  },
   reader: {
     position: 'absolute',
     top: 50,

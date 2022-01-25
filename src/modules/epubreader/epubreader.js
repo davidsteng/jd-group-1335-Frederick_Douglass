@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { useSwipeable } from 'react-swipeable'
 import { EpubView } from '..'
 import defaultStyles from './style'
+import {Button, Grid} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const Swipeable = ({ children, ...props }) => {
   const handlers = useSwipeable(props)
@@ -144,6 +146,9 @@ class EBookReader extends PureComponent {
         >
           {showToc && this.renderTocToggle()}
           <div style={styles.titleArea}>{title}</div>
+          <Button component={Link} variant='contained' to="/react-reader" variant='contained' style={styles.homeButton}>
+            Home
+          </Button>
           <Swipeable
             onSwipedRight={this.prev}
             onSwipedLeft={this.next}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { EBookReader } from './modules'
+import { EBookReader, Home } from './modules'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 import {
   Container,
   ReaderContainer,
@@ -76,18 +78,37 @@ class App extends Component {
   render() {
     const { fullscreen, location, localFile, localName } = this.state
     return (
-      <Container>
-        <GlobalStyle />
-        <ReaderContainer fullscreen={fullscreen}>
-          <EBookReader
-            url={localFile || DEMO_URL}
-            title={localName || DEMO_NAME}
-            location={location}
-            locationChanged={this.onLocationChanged}
-            getRendition={this.getRendition}
-          />
-        </ReaderContainer>
-      </Container>
+      <Router>
+        <div>
+          <Routes>
+            <Route exact path="/react-reader" element={<Home/>}/>
+            <Route exact path="/epub" element={<Container>
+              <GlobalStyle />
+              <ReaderContainer fullscreen={fullscreen}>
+                <EBookReader
+                  url={localFile || DEMO_URL}
+                  title={localName || DEMO_NAME}
+                  location={location}
+                  locationChanged={this.onLocationChanged}
+                  getRendition={this.getRendition}
+                />
+              </ReaderContainer>
+            </Container>}/>
+          </Routes>
+        </div>
+      </Router>
+      // <Container>
+      //   <GlobalStyle />
+      //   <ReaderContainer fullscreen={fullscreen}>
+      //     <EBookReader
+      //       url={localFile || DEMO_URL}
+      //       title={localName || DEMO_NAME}
+      //       location={location}
+      //       locationChanged={this.onLocationChanged}
+      //       getRendition={this.getRendition}
+      //     />
+      //   </ReaderContainer>
+      // </Container>
     )
   }
 }
