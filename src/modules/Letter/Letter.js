@@ -1,7 +1,6 @@
 import React from 'react'
 import {Stack} from '@mui/material';
 import {Button, Grid} from '@material-ui/core';
-import cover from './cover.jpg'
 import {Link} from 'react-router-dom';
 
 const Letter = () => {
