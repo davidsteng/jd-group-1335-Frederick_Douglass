@@ -22,10 +22,10 @@ const Home = () => {
                     <Button component={Link} variant='contained' to="/epub" >Enter Book</Button>
                 </Grid>   
                 <Grid item xs={3}>
-                    <Button variant='contained' >Preface</Button>  
+                    <Button component={Link} variant='contained'to="/Preface" >Preface</Button>  
                 </Grid>  
                 <Grid item xs={3}>
-                    <Button variant='contained' >AutoBiograpy</Button>   
+                    <Button component={Link} variant='contained'to="/Letter" >Letter</Button>
                 </Grid>   
             </Grid> 
         </div>
