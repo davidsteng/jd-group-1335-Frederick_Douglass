@@ -2,6 +2,7 @@ import React from 'react'
 import {Stack} from '@mui/material';
 import {Button, Grid} from '@material-ui/core';
 import {Link} from 'react-router-dom';
+import homeicon from '../../assets/homeicon.png'
 
 const Letter = () => {
     return (
@@ -10,10 +11,11 @@ const Letter = () => {
             style={{textAlign: 'center'}}
             >LETTER FROM WENDELL PHILLIPS, ESQ.</h1>
             <Button
-            style={{position: 'absolute', right: 20, top: 30, backgroundColor: 'white'}}
-            component={Link} 
-            variant='contained' 
-            to="/react-reader" >Home</Button>    
+                style={{position: 'absolute', right: 20, top: 30}}
+                component={Link} 
+                to="/react-reader" >
+                <img src={homeicon} width="40" height="40" ></img>
+            </Button>    
             <p>
                 &emsp;My Dear Friend:
             </p>

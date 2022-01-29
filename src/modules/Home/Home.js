@@ -4,12 +4,13 @@ import {Button, Grid} from '@material-ui/core';
 import cover from './cover.jpg'
 import {Link} from 'react-router-dom';
 
+
 const Home = () => {
     return (
         <div style={{backgroundColor: 'tan'}}>
             <Grid
             container
-            spacing={5}
+            spacing={3}
             direction="column"
             alignItems="center"
             justifyContent="center"
@@ -19,13 +20,13 @@ const Home = () => {
                     <img src={cover} width="240" height="400" />
                 </Grid> 
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained' to="/epub" >Enter Book</Button>
+                    <Button component={Link} variant='contained' to="/epub" style={{fontSize: 18}}>Enter Book</Button>
                 </Grid>   
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/Preface" >Preface</Button>  
+                    <Button component={Link} variant='contained'to="/Preface" style={{fontSize: 18}} >Preface</Button>  
                 </Grid>  
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/Letter" >Letter</Button>
+                    <Button component={Link} variant='contained'to="/Letter" style={{fontSize: 18}}>Letter</Button>
                 </Grid>   
             </Grid> 
         </div>

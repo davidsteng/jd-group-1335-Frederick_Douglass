@@ -5,6 +5,9 @@ import { EpubView } from '..'
 import defaultStyles from './style'
 import {Button, Grid} from '@material-ui/core';
 import {Link} from 'react-router-dom';
+import homeicon from '../../assets/homeicon.png'
+// src/assets/homeicon.png
+// src/modules/epubreader/epubreader.js
 
 const Swipeable = ({ children, ...props }) => {
   const handlers = useSwipeable(props)
@@ -146,9 +149,10 @@ class EBookReader extends PureComponent {
         >
           {showToc && this.renderTocToggle()}
           <div style={styles.titleArea}>{title}</div>
-          <Button component={Link} variant='contained' to="/react-reader" variant='contained' style={styles.homeButton}>
-            Home
+          <Button component={Link} to="/react-reader" style={styles.homeButton}>
+            <img src={homeicon} width="40" height="40" ></img>
           </Button>
+          
           <Swipeable
             onSwipedRight={this.prev}
             onSwipedLeft={this.next}

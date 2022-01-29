@@ -25,8 +25,7 @@ const EBookReaderStyles = {
   homeButton: {
     position: 'absolute',
     right: 50,
-    top: 20,
-    fontSize: 12
+    top: 10,
   },
   reader: {
     position: 'absolute',
