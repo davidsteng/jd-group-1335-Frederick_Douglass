@@ -6,6 +6,8 @@ import defaultStyles from './style'
 import {Button, Grid} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import homeicon from '../../assets/homeicon.png'
+import quizicon from '../../assets/quizicon.png'
+
 // src/assets/homeicon.png
 // src/modules/epubreader/epubreader.js
 
@@ -77,14 +79,14 @@ class EBookReader extends PureComponent {
       <div>
         <div style={styles.tocArea}>
           <div style={styles.toc}>
-            {toc.map((item, i) => (
-              <TocItem
-                {...item}
-                key={i}
-                setLocation={this.setLocation}
-                styles={styles.tocAreaButton}
-              />
-            ))}
+            <Button component={Link} to="/react-reader" style={styles.homeButton}>
+              <img src={homeicon} width="40" height="40" ></img>
+            </Button>
+          </div>
+          <div style={styles.toc}>
+            <Button style={styles.quizButton}>
+              <img src={quizicon} width="40" height="40" ></img>
+            </Button>
           </div>
         </div>
         {expandedToc && (
@@ -149,9 +151,6 @@ class EBookReader extends PureComponent {
         >
           {showToc && this.renderTocToggle()}
           <div style={styles.titleArea}>{title}</div>
-          <Button component={Link} to="/react-reader" style={styles.homeButton}>
-            <img src={homeicon} width="40" height="40" ></img>
-          </Button>
           
           <Swipeable
             onSwipedRight={this.prev}

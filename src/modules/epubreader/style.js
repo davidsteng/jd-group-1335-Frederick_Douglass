@@ -27,6 +27,11 @@ const EBookReaderStyles = {
     right: 50,
     top: 10,
   },
+  quizButton: {
+      position: 'absolute',
+      right: 50,
+      bottom: 400,
+    },
   reader: {
     position: 'absolute',
     top: 50,
