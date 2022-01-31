@@ -6,7 +6,7 @@ import homeicon from '../../assets/homeicon.png'
 
 const Preface = () => {
     return (
-        <div style={{backgroundColor: 'gainsboro', margin: 20}}>
+        <div style={{backgroundColor: 'gainsboro', margin: 20, fontSize: '4.0vh'}}>
             <h1
             style={{textAlign: 'center'}}
             >Preface</h1>
