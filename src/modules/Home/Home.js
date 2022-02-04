@@ -17,7 +17,7 @@ const Home = () => {
             style={{ minHeight: '100vh' }}
             >
                 <Grid item xs={3}>
-                    <img src={cover} width="240" height="400" />
+                    <img src={cover} width=100%" height="auto" />
                 </Grid> 
                 <Grid item xs={3}>
                     <Button component={Link} variant='contained' to="/epub" style={{fontSize: 18}}>Enter Book</Button>
