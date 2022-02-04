@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { EBookReader, Home, Letter, Preface } from './modules'
+import { EBookReader, Home, Letter, Preface, Background} from './modules'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import {
@@ -84,6 +84,7 @@ class App extends Component {
             <Route exact path="/react-reader" element={<Home/>}/>
             <Route exact path="/Preface" element={<Preface/>}/>
             <Route exact path="/Letter" element={<Letter/>}/>
+            <Route exact path="/Background" element={<Background/>}/>
             <Route exact path="/epub" element={<Container>
               <GlobalStyle />
               <ReaderContainer fullscreen={fullscreen}>

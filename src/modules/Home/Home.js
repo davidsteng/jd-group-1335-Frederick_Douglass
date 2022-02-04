@@ -27,6 +27,9 @@ const Home = () => {
                 </Grid>  
                 <Grid item xs={3}>
                     <Button component={Link} variant='contained'to="/Letter" style={{fontSize: 18}}>Letter</Button>
+                </Grid>
+                <Grid item xs={3}>
+                    <Button component={Link} variant='contained'to="/Background" style={{fontSize: 18}}>Background</Button>
                 </Grid>   
             </Grid> 
         </div>
