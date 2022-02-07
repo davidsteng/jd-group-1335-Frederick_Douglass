@@ -3,15 +3,15 @@ import {Stack} from '@mui/material';
 import {Button, Grid} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import homeicon from '../../assets/homeicon.png'
-import FrederickDouglass1 from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Frederick Douglass/FrederickDouglass1.jpg'
-import FrederickDouglass2 from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Frederick Douglass/FrederickDouglass2.jpg'
-import FrederickDouglass3 from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Frederick Douglass/FrederickDouglass3.jpg'
-import JadonBillups from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Readers - Words and Definitions/JadonBillups.jpg'
-import RonadDoe from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Readers - Words and Definitions/RonadDoe Jr.jpg'
-import ZakimyaHolmes from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Readers - Words and Definitions/ZakimyaHolmes.jpg'
-import ss1 from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Slavery in the South/Slavery in the South 8.jpg'
-import ss2 from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Slavery in the South/Slavery in the South 17.jpg'
-import ss3 from '/Users/Tan/Documents/GitHub/PeerPops.io/jd-group-1335/src/assets/background pics/Slavery in the South/Slavery in the South 18.jpg'
+import FrederickDouglass1 from './BackgroundPics/FrederickDouglass1.jpg' 
+import FrederickDouglass2 from './BackgroundPics/FrederickDouglass2.jpg'
+import FrederickDouglass3 from './BackgroundPics/FrederickDouglass3.jpg'
+import JadonBillups from './BackgroundPics/JadonBillups.jpg'
+import RonadDoe from './BackgroundPics/RonadDoe Jr.jpg'
+import ZakimyaHolmes from './BackgroundPics/ZakimyaHolmes.jpg'
+import ss1 from './BackgroundPics/Slavery in the South 8.jpg'
+import ss2 from './BackgroundPics/Slavery in the South 17.jpg'
+import ss3 from './BackgroundPics/Slavery in the South 18.jpg'
 
 const Background = () => {
     return (
