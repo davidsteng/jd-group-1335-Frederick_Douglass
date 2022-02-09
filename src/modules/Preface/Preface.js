@@ -13,7 +13,7 @@ const Preface = () => {
             <Button
                 style={{position: 'absolute', right: 17, top: 30}}
                 component={Link} 
-                to="/react-reader" >
+                to="/BackgroundInfo" >
                 <img src={homeicon} width="40" height="40" ></img>
             </Button>     
             <p>

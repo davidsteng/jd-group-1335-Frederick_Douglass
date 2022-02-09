@@ -13,16 +13,16 @@ import ss1 from './BackgroundPics/Slavery in the South 8.jpg'
 import ss2 from './BackgroundPics/Slavery in the South 17.jpg'
 import ss3 from './BackgroundPics/Slavery in the South 18.jpg'
 
-const Background = () => {
+const Gallery = () => {
     return (
         <div style={{backgroundColor: 'gainsboro',  margin: 20, fontSize: '4.0vh'}}>
             <h1
             style={{textAlign: 'center'}}
-            >Background</h1>
+            >Gallery</h1>
             <Button
                 style={{position: 'absolute', right: 20, top: 30}}
                 component={Link} 
-                to="/react-reader" >
+                to="/BackgroundInfo" >
                 <img src={homeicon} width="40" height="40" ></img>
             </Button>
             <h2
@@ -56,4 +56,4 @@ const Background = () => {
     )        
 }
 
-export default Background
+export default Gallery
