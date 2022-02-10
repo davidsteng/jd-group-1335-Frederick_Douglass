@@ -2,18 +2,27 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Epub from 'epubjs/lib/index'
 import defaultStyles from './style'
+import CustomPopup from '../CustomPopup/CustomPopup'
 
 class EpubView extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isLoaded: false,
-      toc: []
+      toc: [],
+      visibility: false
     }
     this.viewerRef = React.createRef()
     this.location = props.location
     this.book = this.rendition = this.prevPage = this.nextPage = null
     this.initBook(true)
+    // this.visibility = false
+    
+  }
+  popupCloseHandler = (e) => {
+    this.setState({visibility: !this.state.visibility})
+    // this.visibility = !this.visibility
+    console.log(this.state.visibility)
   }
 
   initBook() {
@@ -95,7 +104,20 @@ class EpubView extends Component {
     const { loadingView, styles } = this.props
     return (
       <div style={styles.viewHolder}>
-        {(isLoaded && this.renderBook()) || loadingView}
+        <div className="App">
+          <button onClick={(e) => this.popupCloseHandler(e)}>Toggle Popup</button>
+        </div>
+        <div style={styles.viewHolder}>
+          {(isLoaded && this.renderBook()) || loadingView}
+          <CustomPopup
+            onClose={this.popupCloseHandler}
+            show={this.state.visibility}
+            title="Word Defintions">
+              <h2>Hello This is Popup Content Area</h2>
+              <h2>This is my lorem ipsum text here!</h2>
+          </CustomPopup>
+        </div>
+
       </div>
     )
   }
