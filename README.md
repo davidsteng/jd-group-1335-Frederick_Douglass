@@ -1,12 +1,23 @@
 # Project HearATale Narrative of the life of Frederick Douglas
+Project HearATale aims to create a web based application designed to help below average literacy level high school students improve in their reading comprehension.
+Our team aims to create a web based e-reader through javascript, html, and react that allows the user to read the Narrative of the Life of Frederick Douglas while supported by
+an audio reader. To improve on user literacy and comprehension our final deliverable aims to provide user word pronounciation, word definitions, and word quizzes.
 
-## Text parser (`main.py`)
-To use the text parser, we rely on `pipenv` to make sure all our dependencies are installed.
-To use this project:
-1. Make sure that all the necessary files are in the correct place. The text (in our case the Frederick Douglass .txt file) should be stored as `text.txt` under `./assets/text_to_parse` and the already-recorded words should be stored under that same directory as `recorded_words.txt` (this step is already done for you unless you want to parse some different text).
-2. Install `python3`.
-3. Install `pip`.
-4. On the command line, run `pip install`.
-5. On the command line, run `python3 main.py` to parse the text.
-6. The output will be produced under `./assets/out`.
-   
+# Relase Notes
+
+## Version 0.1.0
+
+### Features
+   - Home screen added to application
+   - Preface of novel added
+   - Letter from Wendell Phillips added
+   - Pages of novel seperated to end on paragraph when possible
+   - Side bar selection added to include return to home page and start quiz button
+
+### Bug Fixes
+   - Table of Contents removed to be reimplemented on right side of application window
+   - Bug regarding buttons not working to jump to chapter start fixed
+
+### Known Issues
+   - Clicking on a word in the novel does not properly return word information for loading audio and definition
+   - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
