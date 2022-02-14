@@ -1,4 +1,4 @@
-# jdd-group-1335
+# Project HearATale Narrative of the life of Frederick Douglas
 
 ## Text parser (`main.py`)
 To use the text parser, we rely on `pipenv` to make sure all our dependencies are installed.
