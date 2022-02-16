@@ -10,15 +10,15 @@
     transition: opacity 500ms;
   }
   .popup {
-    margin: 200px auto;
-    padding: 20px;
+    margin: 100px auto;
+    /* padding: 20px; */
     background: #fff;
     border-radius: 5px;
-    width: 50%;
-    height: 50%;
+    width: 68%;
+    height: 80%;
     position: relative;
-    border: solid green 5px;
     transition: all 5s ease-in-out;
+    border: solid black 5px;
   }
   
   .popup h2 {
