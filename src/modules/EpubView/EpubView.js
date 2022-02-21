@@ -119,37 +119,39 @@ class EpubView extends Component {
     console.log(str.substring(a,b));
 
     var word = str.substring(a,b)
-    if (word[word.length - 1] == "." || word[word.length - 1] == ",") {
+    console.log(word[word.length - 2])
+    if (word[word.length - 1] == "." || word[word.length - 1] == "," || word[word.length - 1] == ";" || word[word.length - 1] == "’") { //last condition checks for names with possessives ending in "s’", i.e: Thomas’, James’, etc.
       word = word.substring(0,word.length - 1)
+    } 
+    else if (word[word.length - 2] == "’" && word[word.length - 1] == "s") { //checks for names with possessives ending in "’s", i.e: Lloyd’s, Tom’s, Sofia’s, etc.
+      word = word.substring(0,word.length - 2)
     }
     word = word[0].toUpperCase() + word.substring(1,word.length)
     console.log(word)
     str = word.toLowerCase();
 
     for (word in TargetWords) {
-      var tempStr = TargetWords[word][0].replace('[', '').replace(']', '').replace(' ','')
+      var tempStr = TargetWords[word][0].toLowerCase().replace('[', '').replace(']', '').replace(' ','')
       var derivatives = tempStr.split(', ')
-      if (word == str) {
+      var definition = TargetWords[word][1].replace('‘','\"').replace('’','\"') //BUG: this doesn't fix single quotes in definitions not displaying correctly as I expected, may have to change in CSV later instead
+      if (word == str) {  //BUG: ignores "Aliciana" as a name since it is created as a key for all the other names in json, need to reformat names section of json or csv and put Aliciana in values and replace the key with something like "NAME"
         this.setState({visibility: !this.state.visibility});
         str = str[0].toUpperCase() + str.substring(1,str.length)
         this.setState({highlightedWord: str});
         this.setState({wordDerivs: TargetWords[word][0]})
-        this.setState({wordDef: TargetWords[word][1]})
+        this.setState({wordDef: definition})
         break
       } else {
         
         for (var elem in derivatives) {
           elem = elem.toLowerCase()
         }
-        //console.log(derivatives)
-        if (derivatives.includes(str.toLowerCase()) && str != ' ') { //CURRENT BUG (NEEDS FIX): if selected word is also a substring of one of the listed derivative words, but not a derivative (ie "Ned" is a substring of "yawn"'s derivative "yawNED")
-          //console.log(word)                                           // definitely some other bugs but need to test more to squash em
-          //console.log(derivatives)
+        if (derivatives.includes(str.toLowerCase()) && str != ' ') {
           str = word
           this.setState({visibility: !this.state.visibility});
           this.setState({highlightedWord: str});
           this.setState({wordDerivs: TargetWords[word][0]})
-          this.setState({wordDef: TargetWords[word][1]})
+          this.setState({wordDef: definition})
           break
         }
       }

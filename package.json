@@ -1,6 +1,6 @@
 {
-  "name": "epubreader",
-  "version": "0.0.1",
+  "name": "Frederick Douglass - HearATale",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "scripts": {
     "compile": "NODE_ENV=production babel --out-dir lib src/modules",
