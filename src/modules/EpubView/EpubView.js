@@ -123,11 +123,12 @@ class EpubView extends Component {
       word = word.substring(0,word.length - 1)
     }
     word = word[0].toUpperCase() + word.substring(1,word.length)
-    
-    //var file = "../../../backend/Targetwords.csv";
-    var str = word.toLowerCase();
-    console.log(str)
+    console.log(word)
+    str = word.toLowerCase();
+
     for (word in TargetWords) {
+      var tempStr = TargetWords[word][0].replace('[', '').replace(']', '').replace(' ','')
+      var derivatives = tempStr.split(', ')
       if (word == str) {
         this.setState({visibility: !this.state.visibility});
         str = str[0].toUpperCase() + str.substring(1,str.length)
@@ -136,8 +137,14 @@ class EpubView extends Component {
         this.setState({wordDef: TargetWords[word][1]})
         break
       } else {
-        if (TargetWords[word][0].includes(str)) {
-          console.log(word)
+        
+        for (var elem in derivatives) {
+          elem = elem.toLowerCase()
+        }
+        //console.log(derivatives)
+        if (derivatives.includes(str.toLowerCase()) && str != ' ') { //CURRENT BUG (NEEDS FIX): if selected word is also a substring of one of the listed derivative words, but not a derivative (ie "Ned" is a substring of "yawn"'s derivative "yawNED")
+          //console.log(word)                                           // definitely some other bugs but need to test more to squash em
+          //console.log(derivatives)
           str = word
           this.setState({visibility: !this.state.visibility});
           this.setState({highlightedWord: str});
