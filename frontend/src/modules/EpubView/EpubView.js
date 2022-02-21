@@ -79,7 +79,38 @@ class EpubView extends Component {
       locationChanged && locationChanged(newLocation)
     }
   }
+/**
+<script src=jd-group-1335/backend/sightwords.csv></script>
+<script>
+var ExcelToJSON = function() {
+  this.parseExcel = function(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var data = e.target.result;
+      var workbook = XLSX.read(data, {
+        type: 'binary'
+      });
+      workbook.SheetNames.forEach(function(sheetName) {
+        var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+      })
+    };
+    };
+  };
+};
+</script>
+**/
 
+/**
+function search( obj, value, path ) {
+  var keys = Object.keys(obj);
+  for( var i=0; i<keys.length; i++ ) {
+    if(obj[ keys[i] ] === value) {
+       return keys[i+1];
+    }
+  }
+  return "word not found";
+}
+**/
   renderBook() {
     const { styles } = this.props
     return <div ref={this.viewerRef} style={styles.view} />
