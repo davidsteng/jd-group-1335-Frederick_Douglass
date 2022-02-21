@@ -10,6 +10,5 @@ import Biography from './Biography/Biography'
 import Gallery from './Gallery/Gallery'
 
 
-
 export { EpubView, EpubViewStyle, EBookReader, EBookReaderStyle, Home,  BackgroundInfo, Preface, Letter, Biography, Gallery}
  

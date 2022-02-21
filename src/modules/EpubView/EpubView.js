@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Epub from 'epubjs/lib/index'
 import defaultStyles from './style'
 import CustomPopup from '../CustomPopup/CustomPopup'
+import { EpubCFI } from 'epubjs'
+import TargetWords from '../../Targetwords.json';
 
 class EpubView extends Component {
   constructor(props) {
@@ -10,7 +12,10 @@ class EpubView extends Component {
     this.state = {
       isLoaded: false,
       toc: [],
-      visibility: false
+      visibility: false,
+      highlightedWord: "",
+      wordDerivs: " ",
+      wordDef: ""
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -75,8 +80,10 @@ class EpubView extends Component {
     const { handleKeyPress, handleTextSelected } = this.props
     this.rendition.on('locationChanged', this.onLocationChange)
     this.rendition.on('keyup', handleKeyPress || this.handleKeyPress)
+    this.rendition.on('click', handleTextSelected || this.handleTextSelected)
     if (handleTextSelected) {
-      this.rendition.on('selected', handleTextSelected)
+      console.log("selected text")
+
     }
   }
 
@@ -99,22 +106,66 @@ class EpubView extends Component {
     key && key === 'ArrowLeft' && this.prevPage()
   }
 
+  handleTextSelected = (s) => {
+    var iFrameID = this.rendition.manager.views._views[0].id
+    var iframe = document.getElementById(iFrameID);
+    var idoc= iframe.contentDocument || iframe.contentWindow.document; // ie compatibility
+    var sel=idoc.getSelection();
+    var str=sel.anchorNode.nodeValue, len=str.length
+    var a = sel.anchorOffset
+    var b = sel.anchorOffset
+    while(str[a]!=' '&&a--){}; if (str[a]==' ') a++; // start of word
+    while(str[b]!=' '&&b++<len){};                   // end of word+1
+    console.log(str.substring(a,b));
+
+    var word = str.substring(a,b)
+    if (word[word.length - 1] == "." || word[word.length - 1] == ",") {
+      word = word.substring(0,word.length - 1)
+    }
+    word = word[0].toUpperCase() + word.substring(1,word.length)
+    
+    //var file = "../../../backend/Targetwords.csv";
+    var str = word.toLowerCase();
+    console.log(str)
+    for (word in TargetWords) {
+      if (word == str) {
+        this.setState({visibility: !this.state.visibility});
+        str = str[0].toUpperCase() + str.substring(1,str.length)
+        this.setState({highlightedWord: str});
+        this.setState({wordDerivs: TargetWords[word][0]})
+        this.setState({wordDef: TargetWords[word][1]})
+        break
+      } else {
+        if (TargetWords[word][0].includes(str)) {
+          console.log(word)
+          str = word
+          this.setState({visibility: !this.state.visibility});
+          this.setState({highlightedWord: str});
+          this.setState({wordDerivs: TargetWords[word][0]})
+          this.setState({wordDef: TargetWords[word][1]})
+          break
+        }
+      }
+    }
+  }  
+
   render() {
     const { isLoaded } = this.state
     const { loadingView, styles } = this.props
+    
     return (
       <div style={styles.viewHolder}>
         <div className="App">
-          <button onClick={(e) => this.popupCloseHandler(e)}>Toggle Popup</button>
         </div>
         <div style={styles.viewHolder}>
           {(isLoaded && this.renderBook()) || loadingView}
           <CustomPopup
             onClose={this.popupCloseHandler}
             show={this.state.visibility}
-            title="Word Defintions">
-              <h2>Hello This is Popup Content Area</h2>
-              <h2>This is my lorem ipsum text here!</h2>
+            title={this.state.highlightedWord}>
+              <h2>{this.state.wordDerivs}</h2>
+              <h2>{this.state.wordDef}</h2>
+              
           </CustomPopup>
         </div>
 

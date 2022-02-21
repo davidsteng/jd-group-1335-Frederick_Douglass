@@ -10,7 +10,7 @@ import {
 
 const storage = global.localStorage || null
 
-const DEMO_URL = '/react-reader/files/Narrative of The Life of Frederick Douglass.epub'
+const DEMO_URL = '/react-reader/files/Narrative of the Life of Frederick Douglass.epub'
 const DEMO_NAME = 'Narrative of The Life of Frederick Douglass'
 
 const GlobalStyle = createGlobalStyle`
