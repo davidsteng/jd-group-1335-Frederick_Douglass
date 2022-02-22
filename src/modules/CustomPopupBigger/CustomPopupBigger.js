@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import popupStyles from "./mystyle.module.css";
 import PropTypes from "prop-types";
-const CustomPopup = (props) => {
+const CustomPopupBigger = (props) => {
   const [show, setShow] = useState(false);
  
   const closeHandler = (e) => {
@@ -22,7 +22,7 @@ const CustomPopup = (props) => {
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h2>{props.title}</h2>
+        <h2 style={{fontWeight: 'bold'} , {fontSize: 'xx-large'}}>{props.title}</h2>
         <span className={popupStyles.close} onClick={closeHandler}>
           &times;
         </span>
@@ -32,10 +32,10 @@ const CustomPopup = (props) => {
   );
 };
  
-CustomPopup.propTypes = {
+CustomPopupBigger.propTypes = {
   title: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
 };
-export default CustomPopup;
+export default CustomPopupBigger;
  

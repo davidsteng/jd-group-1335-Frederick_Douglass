@@ -22,7 +22,7 @@ const CustomPopup = (props) => {
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h2>{props.title}</h2>
+        <h2 style={{fontWeight: 'bold'}}>{props.title}</h2>
         <span className={popupStyles.close} onClick={closeHandler}>
           &times;
         </span>

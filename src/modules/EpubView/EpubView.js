@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import Epub from 'epubjs/lib/index'
 import defaultStyles from './style'
 import CustomPopup from '../CustomPopup/CustomPopup'
+import CustomPopupBigger from '../CustomPopupBigger/CustomPopupBigger'
 import { EpubCFI } from 'epubjs'
 import TargetWords from '../../Targetwords.json';
+import SightWords from '../../Sightwords.json';
 
 class EpubView extends Component {
   constructor(props) {
@@ -15,7 +17,10 @@ class EpubView extends Component {
       visibility: false,
       highlightedWord: "",
       wordDerivs: " ",
-      wordDef: ""
+      wordDef: "",
+      visibility2: false,
+      highlightedWord2: "",
+      wordDerivs2: " "
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -28,6 +33,12 @@ class EpubView extends Component {
     this.setState({visibility: !this.state.visibility})
     // this.visibility = !this.visibility
     console.log(this.state.visibility)
+  }
+
+  popupCloseHandler2 = (e) => {
+    this.setState({visibility2: !this.state.visibility2})
+    // this.visibility = !this.visibility
+    console.log(this.state.visibility2)
   }
 
   initBook() {
@@ -130,6 +141,34 @@ class EpubView extends Component {
     console.log(word)
     str = word.toLowerCase();
 
+    //handling if sightword
+    for (word in SightWords) {
+      word = word.replace(';','')
+      console.log(word)
+      var derivatives = SightWords[word + ';']
+      if (word == str) {
+        this.setState({visibility2: !this.state.visibility2});
+        str = str[0].toUpperCase() + str.substring(1,str.length)
+        this.setState({highlightedWord2: "\"" + str + "\"" + " is a sight word."});
+        this.setState({wordDerivs2: SightWords[word + ';'].toString().replace(',','')})
+        break
+      } else {
+        //check if word in derivatives
+        for (var elem in derivatives) {
+          elem = elem.toLowerCase()
+        }
+        if (derivatives.includes(str.toLowerCase()) && str != ' ') {
+          str = word
+          this.setState({visibility2: !this.state.visibility2});
+          str = str[0].toUpperCase() + str.substring(1,str.length)
+          this.setState({highlightedWord2: "\"" + str + "\"" + " is a sight word."});
+          this.setState({wordDerivs2: SightWords[word + ';'].toString().replace(',','')})
+          break
+        }
+      }
+    }
+
+    //handling if targetword
     for (word in TargetWords) {
       var tempStr = TargetWords[word][0].toLowerCase().replace('[', '').replace(']', '').replace(' ','')
       var derivatives = tempStr.split(', ')
@@ -142,13 +181,14 @@ class EpubView extends Component {
         this.setState({wordDef: definition})
         break
       } else {
-        
+        //check if word in derivatives
         for (var elem in derivatives) {
           elem = elem.toLowerCase()
         }
         if (derivatives.includes(str.toLowerCase()) && str != ' ') {
           str = word
           this.setState({visibility: !this.state.visibility});
+          str = str[0].toUpperCase() + str.substring(1,str.length)
           this.setState({highlightedWord: str});
           this.setState({wordDerivs: TargetWords[word][0]})
           this.setState({wordDef: definition})
@@ -168,13 +208,18 @@ class EpubView extends Component {
         </div>
         <div style={styles.viewHolder}>
           {(isLoaded && this.renderBook()) || loadingView}
-          <CustomPopup
+          <CustomPopupBigger
             onClose={this.popupCloseHandler}
             show={this.state.visibility}
             title={this.state.highlightedWord}>
-              <h2>{this.state.wordDerivs}</h2>
-              <h2>{this.state.wordDef}</h2>
-              
+              <h2>Derivatives: {this.state.wordDerivs}</h2>
+              <h2>Definition: {this.state.wordDef}</h2>           
+          </CustomPopupBigger>
+          <CustomPopup
+            onClose={this.popupCloseHandler2}
+            show={this.state.visibility2}
+            title={this.state.highlightedWord2}>
+              <h2>Derivatives: {this.state.wordDerivs2}</h2>
           </CustomPopup>
         </div>
 
