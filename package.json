@@ -47,6 +47,7 @@
     "chokidar": "^3.5.3",
     "csv-parser": "^3.0.0",
     "epubjs": "^0.3.88",
+    "howler": "^2.2.3",
     "papaparse": "^5.3.1",
     "prop-types": "^15.7.2",
     "react-papaparse": "^4.0.2",

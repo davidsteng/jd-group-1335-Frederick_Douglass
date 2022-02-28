@@ -22,7 +22,7 @@ const CustomPopupBigger = (props) => {
       className={popupStyles.overlay}
     >
       <div className={popupStyles.popup}>
-        <h2 style={{fontWeight: 'bold'} , {fontSize: 'xx-large'}}>{props.title}</h2>
+        {/* <h2 style={{fontWeight: 'bold'} , {fontSize: 'xx-large'}}>{props.title}</h2> */}
         <span className={popupStyles.close} onClick={closeHandler}>
           &times;
         </span>
