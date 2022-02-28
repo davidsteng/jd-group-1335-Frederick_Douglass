@@ -7,6 +7,8 @@ import CustomPopupBigger from '../CustomPopupBigger/CustomPopupBigger'
 import { EpubCFI } from 'epubjs'
 import TargetWords from '../../Targetwords.json';
 import SightWords from '../../Sightwords.json';
+import {Howl} from "howler"
+import audio from '../../assets/audio.png'
 
 class EpubView extends Component {
   constructor(props) {
@@ -31,14 +33,17 @@ class EpubView extends Component {
   }
   popupCloseHandler = (e) => {
     this.setState({visibility: !this.state.visibility})
+    window.Howler.mute(true)
+
+    // window.soundManager.muteAll();
     // this.visibility = !this.visibility
-    console.log(this.state.visibility)
+    // console.log(this.state.visibility)
   }
 
   popupCloseHandler2 = (e) => {
     this.setState({visibility2: !this.state.visibility2})
     // this.visibility = !this.visibility
-    console.log(this.state.visibility2)
+    // console.log(this.state.visibility2)
   }
 
   initBook() {
@@ -93,7 +98,7 @@ class EpubView extends Component {
     this.rendition.on('keyup', handleKeyPress || this.handleKeyPress)
     this.rendition.on('click', handleTextSelected || this.handleTextSelected)
     if (handleTextSelected) {
-      console.log("selected text")
+      // console.log("selected text")
 
     }
   }
@@ -125,12 +130,13 @@ class EpubView extends Component {
     var str=sel.anchorNode.nodeValue, len=str.length
     var a = sel.anchorOffset
     var b = sel.anchorOffset
+    window.Howler.mute(false)
     while(str[a]!=' '&&a--){}; if (str[a]==' ') a++; // start of word
     while(str[b]!=' '&&b++<len){};                   // end of word+1
-    console.log(str.substring(a,b));
+    // console.log(str.substring(a,b));
 
     var word = str.substring(a,b)
-    console.log(word[word.length - 2])
+    // console.log(word[word.length - 2])
     if (word[word.length - 1] == "." || word[word.length - 1] == "," || word[word.length - 1] == ";" || word[word.length - 1] == "’") { //last condition checks for names with possessives ending in "s’", i.e: Thomas’, James’, etc.
       word = word.substring(0,word.length - 1)
     } 
@@ -144,7 +150,7 @@ class EpubView extends Component {
     //handling if sightword
     for (word in SightWords) {
       word = word.replace(';','')
-      console.log(word)
+      // console.log(word)
       var derivatives = SightWords[word + ';']
       if (word == str) {
         this.setState({visibility2: !this.state.visibility2});
@@ -196,7 +202,14 @@ class EpubView extends Component {
         }
       }
     }
-  }  
+  } 
+  soundPlay = (src) => {
+    const sound = new Howl({
+      src,
+      html5: true
+    })
+    sound.play();
+  } 
 
   render() {
     const { isLoaded } = this.state
@@ -212,8 +225,22 @@ class EpubView extends Component {
             onClose={this.popupCloseHandler}
             show={this.state.visibility}
             title={this.state.highlightedWord}>
-              <h2>Derivatives: {this.state.wordDerivs}</h2>
-              <h2>Definition: {this.state.wordDef}</h2>           
+              <div style={styles.container}>
+                <h2 style={styles.title}>{this.state.highlightedWord}</h2>
+                <button style={styles.button} onClick={() => this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+this.state.highlightedWord.toLowerCase().charAt(0)+"/"+ this.state.highlightedWord.toLowerCase()+ ".mp3")}>
+                  <img src={audio} width="40" height="40" ></img>
+                </button> 
+              </div>
+              
+              <h2 style={{marginLeft: '10px'}}>{this.state.wordDerivs}</h2>
+              <div style={styles.container}>
+                <h2 style={styles.defintion}> {this.state.wordDef}</h2>
+                <button style={styles.button} onClick={() => this.soundPlay("https://brainy-literacy-assets.s3.amazonaws.com/audio/defs/"+this.state.highlightedWord.toUpperCase().charAt(0)+"/"+ this.state.highlightedWord.toLowerCase()+ "%2B.mp3")}>
+                  <img src={audio} width="40" height="40" ></img>
+                </button> 
+              </div>
+              
+                        
           </CustomPopupBigger>
           <CustomPopup
             onClose={this.popupCloseHandler2}
