@@ -29,10 +29,13 @@ const Home = () => {
                     <img src={FrederickDouglass2} width="100%" height="auto" textAlign= 'center'    />
                 </Grid> 
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained' to="/epub" style={{fontSize: 18}}>Enter Book</Button>
+                    <Button component={Link} variant='contained' to="/epub" style={{fontSize: 32}}>Enter Book</Button>
                 </Grid>   
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/BackgroundInfo" style={{fontSize: 18}}>Background</Button>
+                    <Button component={Link} variant='contained'to="/BackgroundInfo" style={{fontSize: 32}}>Background</Button>
+                </Grid>   
+                <Grid item xs={3}>
+                    <Button component={Link} variant='contained'to="/BackgroundInfo" style={{fontSize: 32}}>Help</Button>
                 </Grid>   
             </Grid> 
         </div>

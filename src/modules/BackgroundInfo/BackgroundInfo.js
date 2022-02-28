@@ -11,37 +11,40 @@ const BackgroundInfo = () => {
         <div style={{backgroundColor: 'tan'}}>
             <Grid
             container
-            spacing={5}
+            spacing={4}
             direction="column"
             alignItems="center"
             justifyContent="center"
-            style={{ minHeight: '100vh' }}
+            style={{ minHeight: '103vh' }}
             >
                 <Grid item xs={3}>
                     <h1
-                    style={{fontSize: '4.0vh', textAlign: 'center'}}
+                    style={{position: 'absolute', right: '44%', top: -20, fontSize: '4.0vh', }}
                     >
                         Background
                     </h1>
                 </Grid> 
-                <Grid item xs={3}
+                <Grid item xs={3} 
                 >
-                    <img src={FrederickDouglass1} width="100%" height="auto" textAlign= 'center'    />
+                    <p
+                    style={{textAlign: 'center'}}>
+                    <img src={FrederickDouglass1} width="100%" height="auto" display="block" margin-left="10" />
+                    </p>
                 </Grid> 
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained' to="/react-reader" style={{fontSize: 18}}>Home</Button>
+                    <Button component={Link} variant='contained' to="/react-reader" style={{fontSize: 28}}>Home</Button>
                 </Grid>   
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/Preface" style={{fontSize: 18}} >Preface</Button>  
+                    <Button component={Link} variant='contained'to="/Preface" style={{fontSize: 28}} >Preface</Button>  
                 </Grid>  
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/Letter" style={{fontSize: 18}}>Letter</Button>
+                    <Button component={Link} variant='contained'to="/Letter" style={{fontSize: 28}}>Letter</Button>
                 </Grid>
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/Biography" style={{fontSize: 18}}>Biography</Button>
+                    <Button component={Link} variant='contained'to="/Biography" style={{fontSize: 28}}>Biography</Button>
                 </Grid>
                 <Grid item xs={3}>
-                    <Button component={Link} variant='contained'to="/Gallery" style={{fontSize: 18}}>Gallery</Button>
+                    <Button component={Link} variant='contained'to="/Gallery" style={{fontSize: 28}}>Gallery</Button>
                 </Grid>      
             </Grid> 
         </div>
