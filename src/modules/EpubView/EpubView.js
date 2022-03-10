@@ -22,7 +22,8 @@ class EpubView extends Component {
       wordDef: "",
       visibility2: false,
       highlightedWord2: "",
-      wordDerivs2: " "
+      wordDerivs2: " ",
+      amountClicked: 0
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -145,6 +146,7 @@ class EpubView extends Component {
     }
     word = word[0].toUpperCase() + word.substring(1,word.length)
     console.log(word)
+    this.setState({amountClicked: this.state.amountClicked + 1})
     str = word.toLowerCase();
 
     //handling if sightword
@@ -153,7 +155,13 @@ class EpubView extends Component {
       // console.log(word)
       var derivatives = SightWords[word + ';']
       if (word == str) {
-        this.setState({visibility2: !this.state.visibility2});
+        if (this.state.amountClicked > 1 && word == this.state.highlightedWord2.substring(1, 1 + word.length).toLowerCase()) {
+            this.setState({visibility2: !this.state.visibility2});
+            this.setState({amountClicked: 0})
+        } else {
+            this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
+        }
+        // this.setState({visibility2: !this.state.visibility2});
         str = str[0].toUpperCase() + str.substring(1,str.length)
         this.setState({highlightedWord2: "\"" + str + "\"" + " is a sight word."});
         this.setState({wordDerivs2: SightWords[word + ';'].toString().replace(',','')})
@@ -180,7 +188,14 @@ class EpubView extends Component {
       var derivatives = tempStr.split(', ')
       var definition = TargetWords[word][1].replace('‘','\"').replace('’','\"') //BUG: this doesn't fix single quotes in definitions not displaying correctly as I expected, may have to change in CSV later instead
       if (word == str) {  //BUG: ignores "Aliciana" as a name since it is created as a key for all the other names in json, need to reformat names section of json or csv and put Aliciana in values and replace the key with something like "NAME"
-        this.setState({visibility: !this.state.visibility});
+        console.log(this.state.highlightedWord.substring(0, word.length).toLowerCase())
+        if (this.state.amountClicked > 1 && word == this.state.highlightedWord.substring(0, word.length).toLowerCase()) {
+            this.setState({visibility: !this.state.visibility});
+            this.setState({amountClicked: 0})
+        } else {
+            this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
+        }
+        // this.setState({visibility: !this.state.visibility});
         str = str[0].toUpperCase() + str.substring(1,str.length)
         this.setState({highlightedWord: str});
         this.setState({wordDerivs: TargetWords[word][0]})
@@ -193,7 +208,14 @@ class EpubView extends Component {
         }
         if (derivatives.includes(str.toLowerCase()) && str != ' ') {
           str = word
-          this.setState({visibility: !this.state.visibility});
+          console.log(this.state.highlightedWord.substring(0, word.length).toLowerCase())
+          if (this.state.amountClicked > 1 && word == this.state.highlightedWord.substring(0, word.length).toLowerCase()) {
+              this.setState({visibility: !this.state.visibility});
+              this.setState({amountClicked: 0})
+          } else {
+            this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
+          }
+          // this.setState({visibility: !this.state.visibility});
           str = str[0].toUpperCase() + str.substring(1,str.length)
           this.setState({highlightedWord: str});
           this.setState({wordDerivs: TargetWords[word][0]})
