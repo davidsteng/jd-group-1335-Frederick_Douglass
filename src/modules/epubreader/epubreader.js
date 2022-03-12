@@ -47,6 +47,7 @@ class EBookReader extends PureComponent {
     this.state = {
       expandedToc: false,
       toc: false,
+      //Sets Page Num to 1
       pageNum: 1
     }
 
@@ -58,23 +59,25 @@ class EBookReader extends PureComponent {
     })
   }
 
-  incrementPage = () => {
-    const { pageNumInc } = this.props
-    this.setState({
-      pageNum: this.state.pageNum + 1
+  //Tried writing a function to inc and dec pagenum but couldnt get it to work
+  // incrementPage = () => {
+  //   const { pageNumInc } = this.props
+  //   this.setState({
+  //     pageNum: this.state.pageNum + 1
 
-    })
-  }
+  //   })
+  // }
 
-  decrementPage = () => {
-    const { pageNumDec } = this.props
-    this.setState({
-      pageNum: this.state.pageNum - 1
+  // decrementPage = () => {
+  //   const { pageNumDec } = this.props
+  //   this.setState({
+  //     pageNum: this.state.pageNum - 1
 
-    })
-  }
+  //   })
+  // }
 
   next = () => {
+    //Sets page num + 1
     console.log(this.state.pageNum)
       this.setState({
       pageNum: this.state.pageNum + 1
@@ -85,6 +88,7 @@ class EBookReader extends PureComponent {
   }
 
   prev = () => {
+    //Sets page num - 1
         this.setState({
       pageNum: this.state.pageNum - 1
 
