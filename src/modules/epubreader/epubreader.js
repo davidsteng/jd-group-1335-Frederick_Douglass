@@ -112,6 +112,9 @@ class EBookReader extends PureComponent {
   renderSwitch(pageNum) {
     switch(pageNum) {
       case 1:
+        //Make sure to change the end of the dropbox or aws share links
+        //For example it may look like this https://www.dropbox.com/s/hx585jyj5vzc596/Frederick%20Douglas_Chapter%2004.mp3?dl=0
+        //You have to change the end of the link to raw=1 and delete the dl=0
         return "https://www.dropbox.com/s/9464zjkkd5fz01g/Frederick%20Douglas_Chapter%2001.mp3?raw=1";
       case 5:
         return "https://www.dropbox.com/s/8x54fiopf2ckzgv/Frederick%20Douglas_Chapter%2002.mp3?raw=1";
