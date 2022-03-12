@@ -9,6 +9,8 @@ import TargetWords from '../../Targetwords.json';
 import SightWords from '../../Sightwords.json';
 import {Howl} from "howler"
 import audio from '../../assets/audio.png'
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 class EpubView extends Component {
   constructor(props) {
@@ -238,9 +240,11 @@ class EpubView extends Component {
     const { loadingView, styles } = this.props
     
     return (
+      
       <div style={styles.viewHolder}>
         <div className="App">
         </div>
+        
         <div style={styles.viewHolder}>
           {(isLoaded && this.renderBook()) || loadingView}
           <CustomPopupBigger
@@ -271,10 +275,23 @@ class EpubView extends Component {
               <h2>Derivatives: {this.state.wordDerivs2}</h2>
           </CustomPopup>
         </div>
-
       </div>
     )
   }
+
+  Home = () => {
+    const {styles} = this.props
+    return (
+        <div style={styles.player}>
+          <p>
+            hello
+          </p>
+        </div>
+    )
+}
+  
+
+
 }
 
 EpubView.defaultProps = {

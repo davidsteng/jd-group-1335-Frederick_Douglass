@@ -4,7 +4,8 @@ import {Button, Grid} from '@material-ui/core';
 import FrederickDouglass2 from './FrederickDouglass2.jpg'
 import cover from './cover.jpg'
 import {Link} from 'react-router-dom';
-
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 const Home = () => {
     return (
@@ -38,7 +39,9 @@ const Home = () => {
                     <Button component={Link} variant='contained'to="/BackgroundInfo" style={{fontSize: 32}}>Help</Button>
                 </Grid>   
             </Grid> 
+
         </div>
+
     )
 }
 

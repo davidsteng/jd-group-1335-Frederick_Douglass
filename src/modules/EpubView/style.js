@@ -29,7 +29,12 @@ const epubViewStyles = {
     marginRight: '10px',
     display: "inline-block",
     marginLeft: '10px'
+  },
+  player: {
+    position: 'absolute',
+    bottom: "0%"
   }
+
 
 }
 

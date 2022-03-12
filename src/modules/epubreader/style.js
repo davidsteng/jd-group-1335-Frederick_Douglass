@@ -140,6 +140,10 @@ const EBookReaderStyles = {
   },
   tocButtonBottom: {
     top: '66%'
+  },
+  player: {
+    position: 'absolute',
+    bottom: '10%'
   }
 }
 
