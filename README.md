@@ -37,3 +37,21 @@ an audio reader. To improve on user literacy and comprehension our final deliver
 
 ### Known Issues
    - Not all word definitions are loaded into the system due to late access to Part 1 definitions
+
+## Version 0.3.0
+
+### Features
+   - Clicking on a word for the first time now plays the audio of the word
+   - Clicking on a word for the second time within a time fram now opens the pop-up for the word
+   - Clicking on a word within the popup now plays the word audio
+   - Clicking on a word definition within a popup plays the word definition
+   - Audio Slider has been added for traversing through a chapter's audio files
+   - Audio files linked to nextpage function - clicking the next page loads the next audio file as well as page text
+
+### Bug Fixes
+   - Additional words added to the definitions page
+   - Additional code added to differentiate between names from definition words, names no longer show as a a list of derivative words
+
+### Known Issues
+   - Words are formatted differently on screens with different aspect ratio - potential fix is to scale ereader width off a factor of the height
+   - Clicking on a word in the text should pause the audio reading of the chapter
