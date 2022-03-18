@@ -151,7 +151,7 @@ class EBookReader extends PureComponent {
           <div style={styles.tocBackground} onClick={this.toggleToc} />
         )}
         
-        <AudioPlayer style={{width: '86%', height: '12%', position: 'fixed', bottom: '2%'}}
+        <AudioPlayer style={{width: '86%', height: '14%', position: 'fixed', bottom: '0%'}}
             //LINK TO AUDIO PLAYER PAGE FOR FUNCTIONS AND INFORMATION: https://www.npmjs.com/package/react-h5-audio-player
             // autoPlay -uncomment to auto play
             // showSkipControls={true} -uncomment to see skip controls, shouldn't need
