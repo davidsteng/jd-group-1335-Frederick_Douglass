@@ -9,6 +9,8 @@ import TargetWords from '../../Targetwords.json';
 import SightWords from '../../Sightwords.json';
 import {Howl} from "howler"
 import audio from '../../assets/audio.png'
+import quiz from '../../assets/quizicon.png'
+
 
 class EpubView extends Component {
   constructor(props) {
@@ -17,6 +19,8 @@ class EpubView extends Component {
       isLoaded: false,
       toc: [],
       visibility: false,
+      quizvisibility: false,
+      quiz: false,
       highlightedWord: "",
       wordDerivs: " ",
       wordDef: "",
@@ -29,6 +33,8 @@ class EpubView extends Component {
     this.location = props.location
     this.book = this.rendition = this.prevPage = this.nextPage = null
     this.initBook(true)
+    this.handleQuiz = this.handleQuiz.bind(this)
+
     // this.visibility = false
     
   }
@@ -43,6 +49,11 @@ class EpubView extends Component {
 
   popupCloseHandler2 = (e) => {
     this.setState({visibility2: !this.state.visibility2})
+    // this.visibility = !this.visibility
+    // console.log(this.state.visibility2)
+  }
+  popupCloseQuiz = (e) => {
+    this.setState({quiz: !this.state.quiz})
     // this.visibility = !this.visibility
     // console.log(this.state.visibility2)
   }
@@ -145,7 +156,7 @@ class EpubView extends Component {
       word = word.substring(0,word.length - 2)
     }
     word = word[0].toUpperCase() + word.substring(1,word.length)
-    console.log(word)
+    // console.log(word)
     this.setState({amountClicked: this.state.amountClicked + 1})
     str = word.toLowerCase();
 
@@ -188,7 +199,7 @@ class EpubView extends Component {
       var derivatives = tempStr.split(', ')
       var definition = TargetWords[word][1].replace('‘','\"').replace('’','\"') //BUG: this doesn't fix single quotes in definitions not displaying correctly as I expected, may have to change in CSV later instead
       if (word == str) {  //BUG: ignores "Aliciana" as a name since it is created as a key for all the other names in json, need to reformat names section of json or csv and put Aliciana in values and replace the key with something like "NAME"
-        console.log(this.state.highlightedWord.substring(0, word.length).toLowerCase())
+        // console.log(this.state.highlightedWord.substring(0, word.length).toLowerCase())
         if (this.state.amountClicked > 1 && word == this.state.highlightedWord.substring(0, word.length).toLowerCase()) {
             this.setState({visibility: !this.state.visibility});
             this.setState({amountClicked: 0})
@@ -208,7 +219,7 @@ class EpubView extends Component {
         }
         if (derivatives.includes(str.toLowerCase()) && str != ' ') {
           str = word
-          console.log(this.state.highlightedWord.substring(0, word.length).toLowerCase())
+          // console.log(this.state.highlightedWord.substring(0, word.length).toLowerCase())
           if (this.state.amountClicked > 1 && word == this.state.highlightedWord.substring(0, word.length).toLowerCase()) {
               this.setState({visibility: !this.state.visibility});
               this.setState({amountClicked: 0})
@@ -232,6 +243,11 @@ class EpubView extends Component {
     })
     sound.play();
   } 
+  handleQuiz() {
+    this.setState({quiz: !this.state.quiz})
+    console.log(this.state.quiz)
+  }
+
 
   render() {
     const { isLoaded } = this.state
@@ -252,6 +268,10 @@ class EpubView extends Component {
                 <button style={styles.button} onClick={() => this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+this.state.highlightedWord.toLowerCase().charAt(0)+"/"+ this.state.highlightedWord.toLowerCase()+ ".mp3")}>
                   <img src={audio} width="40" height="40" ></img>
                 </button> 
+
+                <button style={styles.button} onClick={this.handleQuiz}>
+                  <img src={quiz} width="40" height="40" ></img>
+                </button> 
               </div>
               
               <h2 style={{marginLeft: '10px'}}>{this.state.wordDerivs}</h2>
@@ -260,6 +280,7 @@ class EpubView extends Component {
                 <button style={styles.button} onClick={() => this.soundPlay("https://brainy-literacy-assets.s3.amazonaws.com/audio/defs/"+this.state.highlightedWord.toUpperCase().charAt(0)+"/"+ this.state.highlightedWord.toLowerCase()+ "%2B.mp3")}>
                   <img src={audio} width="40" height="40" ></img>
                 </button> 
+                
               </div>
               
                         
@@ -270,6 +291,14 @@ class EpubView extends Component {
             title={this.state.highlightedWord2}>
               <h2>Derivatives: {this.state.wordDerivs2}</h2>
           </CustomPopup>
+
+          {/* Add text for quiz and burrons in the component below! */}
+          
+          <CustomPopupBigger
+            onClose={this.popupCloseQuiz}
+            show={this.state.quiz}
+            title={this.state.highlightedWord2}>
+          </CustomPopupBigger>
         </div>
 
       </div>

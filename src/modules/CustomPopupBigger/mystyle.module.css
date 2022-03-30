@@ -17,7 +17,7 @@
     width: 68%;
     height: 80%;
     position: relative;
-    transition: all 5s ease-in-out;
+    /* transition: all 1s ease-in-out; */
     border: solid black 5px;
   }
   
