@@ -55,3 +55,21 @@ an audio reader. To improve on user literacy and comprehension our final deliver
 ### Known Issues
    - Words are formatted differently on screens with different aspect ratio - potential fix is to scale ereader width off a factor of the height
    - Clicking on a word in the text should pause the audio reading of the chapter
+
+## Version 0.4.0
+
+### Features
+   - Clicking on the question mark within a target words pop-up screen now opens up the quiz screen
+   - The quiz screen provides the user with the definiiton of the word they selected and four words beginning with the same letter as answer options
+   - Correct answer provides the user with 1 gold star incorrect answers turn all gold star silver
+   - Five gold stars in a row master a word
+   - Mastered words cannot lose gold stars even if questions are answered incorrectly
+
+### Bug Fixes
+   - Additional words added to the csv file which contain all words and definitions
+   - Word aspect ratio of pages fixed and remaining audio files parsed and uploaded to the deliverable
+
+### Known Issues
+   - Clicking on a word in the text should pause the audio reading of the chapter
+   - Gold and Silver stars should be correctly formatted onto thee quiz screen instead of overlapping
+   - Quiz screen UI can be improved to be more streamlined for user experience
