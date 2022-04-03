@@ -27,7 +27,11 @@ class EpubView extends Component {
       visibility2: false,
       highlightedWord2: "",
       wordDerivs2: " ",
-      amountClicked: 0
+      amountClicked: 0,
+      quiz_answers: [],
+      correct_answer: 0,
+      feedback: false,
+      feedbackContent: "Incorrect!"
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -228,7 +232,7 @@ class EpubView extends Component {
           }
           // this.setState({visibility: !this.state.visibility});
           str = str[0].toUpperCase() + str.substring(1,str.length)
-          this.setState({highlightedWord: str});
+          this.setState({highlightedWord: str})
           this.setState({wordDerivs: TargetWords[word][0]})
           this.setState({wordDef: definition})
           break
@@ -242,10 +246,55 @@ class EpubView extends Component {
       html5: true
     })
     sound.play();
-  } 
+  }
+
   handleQuiz() {
     this.setState({quiz: !this.state.quiz})
-    console.log(this.state.quiz)
+    var answers = this.makeAnswerArray()
+    this.setState({quiz_answers: answers})
+  }
+
+  makeAnswerArray() {
+    var answer = this.state.highlightedWord
+    var answers = Array(4)
+    var correct_int = this.getRandomInt(1,4)
+    this.setState({correct_answer: correct_int})
+    if (correct_int == 1) {
+      answers[0] = this.state.highlightedWord
+      answers[1] = "Random"
+      answers[2] = "Random"
+      answers[3] = "Random"
+    } else if (correct_int == 2) {
+      answers[0] = "Random"
+      answers[1] = this.state.highlightedWord
+      answers[2] = "Random"
+      answers[3] = "Random"
+    } else if (correct_int == 3) {
+      answers[0] = "Random"
+      answers[1] = "Random"
+      answers[2] = this.state.highlightedWord
+      answers[3] = "Random"
+    } else {
+      answers[0] = "Random"
+      answers[1] = "Random"
+      answers[2] = "Random"
+      answers[3] = this.state.highlightedWord
+    }
+    return answers
+  }
+
+  handleAnswerClick(choice) {
+    if (choice == this.state.correct_answer) {
+      console.log("Correct!")
+    } else {
+      console.log("Incorrect!")
+    }
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min) + min)
   }
 
 
@@ -298,6 +347,55 @@ class EpubView extends Component {
             onClose={this.popupCloseQuiz}
             show={this.state.quiz}
             title={this.state.highlightedWord2}>
+              <div>
+                <h2>{this.state.wordDef}</h2>
+              </div>
+
+              <div>
+                <h2>1.</h2>
+              </div>
+
+              <div>
+                <button onClick={() => this.handleAnswerClick(1)}>
+                  {this.state.quiz_answers[0]}
+                </button>
+              </div>
+
+              <div>
+                <h2>2.</h2>
+              </div>
+
+              <div>
+                <button onClick={() => this.handleAnswerClick(2)}>
+                  {this.state.quiz_answers[1]}
+                </button>
+              </div>
+
+              <div>
+                <h2>3.</h2>
+              </div>
+
+              <div>
+                <button onClick={() => this.handleAnswerClick(3)}>
+                  {this.state.quiz_answers[2]}
+                </button>
+              </div>
+
+              <div>
+                <h2>4.</h2>
+              </div>
+
+              <div>
+                <button onClick={() => this.handleAnswerClick(4)}>
+                  {this.state.quiz_answers[3]}
+                </button>
+              </div>
+
+          </CustomPopupBigger>
+          <CustomPopupBigger
+            onClose={this.handleFeedbackClose}
+            show={this.state.feedback}
+            title={this.state.feedbackContent}>
           </CustomPopupBigger>
         </div>
 
