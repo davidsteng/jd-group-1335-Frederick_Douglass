@@ -43,7 +43,6 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   constructor(props) {
     super(props)
-    this.pageNum = 1
     this.state = {
       fullscreen: true,
       location:
@@ -52,17 +51,10 @@ class App extends Component {
           : 2,
       localFile: null,
       localName: null,
-      largeText: false,
-      pageNum: 1
+      largeText: false
     }
-
     this.rendition = null
   }
-  // setPageNum() {
-  //   this.setState({
-  //     pageNum: 1
-  //   })
-  // }
 
   onLocationChanged = location => {
     this.setState(
@@ -84,7 +76,7 @@ class App extends Component {
   }
   
   render() {
-    const { fullscreen, location, localFile, localName, pageNum } = this.state
+    const { fullscreen, location, localFile, localName } = this.state
     return (
       <Router>
         <div>
@@ -123,7 +115,6 @@ class App extends Component {
       //   </ReaderContainer>
       // </Container>
     )
-    
   }
 }
 
