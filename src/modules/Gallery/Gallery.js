@@ -39,12 +39,14 @@ const Gallery = () => {
             <img src={FrederickDouglass1} width="25.2%" height="auto" ></img>
             <img src={FrederickDouglass2} width="28.6%" height="auto" ></img>
             <img src={FrederickDouglass3} width="46%" height="auto" ></img>
+            <hr></hr>
             <h3
             style={{textAlign: 'center'}}
             >Slavery In The South</h3>
             <img src={ss1} width="33.4%" height="auto" ></img>
             <img src={ss2} width="29%" height="auto" ></img>
             <img src={ss3} width="37.3%" height="auto" ></img>
+            <hr></hr>
             <h4
             style={{textAlign: 'center'}}
             >Readers</h4>
@@ -99,16 +101,15 @@ const Gallery = () => {
             style={{textAlign: 'center'}}>
                 &emsp;Angela Prince
             </p>
-
             <p
             style={{textAlign: 'center'}}
             >
-                <img src={RoderickDavis} width="25%" height="auto" ></img>
+                <img src={MorrisPorter} width="25%" height="auto" ></img>
             </p>
             
             <p
             style={{textAlign: 'center'}}>
-                &emsp;Roderick Davis
+                &emsp;Morris Porter
             </p>
 
             <p
@@ -135,14 +136,29 @@ const Gallery = () => {
             <p
             style={{textAlign: 'center'}}
             >
-                <img src={MorrisPorter} width="25%" height="auto" ></img>
+                <img src={RoderickDavis} width="25%" height="auto" ></img>
             </p>
             
             <p
             style={{textAlign: 'center'}}>
-                &emsp;Morris Porter
+                &emsp;Roderick Davis 
             </p>
 
+            <p
+            style={{textAlign: 'center'}}>
+                &emsp;Roderick Donte’ Davis hails from the great city of Los Angeles, California.
+                A
+                graduate
+                of
+                Clark
+                Atlanta University with a B.A in Theater Arts,
+                he
+                has over fifteen years of acting experience
+                spanning TV, voice over, theatre, and
+                movies. He’s currently living in Atlanta, GA, focusing on his
+                acting and singing career, and is excited to share all of his new projects with the world. 
+            </p>
+            <hr></hr>
 
             <h4
             style={{textAlign: 'center'}}
@@ -158,6 +174,7 @@ const Gallery = () => {
             style={{textAlign: 'center'}}>
                 &emsp;Roderick Prince
             </p>
+            
        </div>
     )        
 }
