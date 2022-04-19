@@ -43,7 +43,7 @@ class EBookReader extends PureComponent {
     this.readerRef = React.createRef()
     this.state = {
       expandedToc: false,
-      toc: false
+      toc: false,
     }
   }
   toggleToc = () => {
@@ -53,11 +53,17 @@ class EBookReader extends PureComponent {
   }
 
   next = () => {
+    this.setState({
+      pageNum: this.state.pageNum + 1
+    })
     const node = this.readerRef.current
     node.nextPage()
   }
 
   prev = () => {
+    this.setState({
+      pageNum: this.state.pageNum - 1
+    })
     const node = this.readerRef.current
     node.prevPage()
   }

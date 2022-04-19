@@ -51,7 +51,8 @@ class App extends Component {
           : 2,
       localFile: null,
       localName: null,
-      largeText: false
+      largeText: false, 
+      pageNum: 1
     }
     this.rendition = null
   }
