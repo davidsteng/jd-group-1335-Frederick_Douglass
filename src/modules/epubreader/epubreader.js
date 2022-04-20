@@ -9,7 +9,7 @@ import homeicon from '../../assets/homeicon.png'
 import quizicon from '../../assets/quizicon.png'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { PlayArrow } from '@mui/icons-material'
+import { Pause, PlayArrow } from '@mui/icons-material'
 
 // src/assets/homeicon.png
 // src/modules/epubreader/epubreader.js
@@ -40,6 +40,7 @@ TocItem.propTypes = {
   styles: PropTypes.object
 }
 
+
 class EBookReader extends PureComponent {
   constructor(props) {
     super(props)
@@ -47,8 +48,7 @@ class EBookReader extends PureComponent {
     this.state = {
       expandedToc: false,
       toc: false,
-      //Sets Page Num to 1
-      pageNum: 1
+      
     }
 
     
@@ -59,41 +59,17 @@ class EBookReader extends PureComponent {
     })
   }
 
-  //Tried writing a function to inc and dec pagenum but couldnt get it to work
-  // incrementPage = () => {
-  //   const { pageNumInc } = this.props
-  //   this.setState({
-  //     pageNum: this.state.pageNum + 1
-
-  //   })
-  // }
-
-  // decrementPage = () => {
-  //   const { pageNumDec } = this.props
-  //   this.setState({
-  //     pageNum: this.state.pageNum - 1
-
-  //   })
-  // }
 
   next = () => {
-    //Sets page num + 1
-    console.log(this.state.pageNum)
-      this.setState({
-      pageNum: this.state.pageNum + 1
-
-    })
+    console.log(this.props.pageNumber)
+    this.props.incPage(1);
     const node = this.readerRef.current
     node.nextPage()
   }
 
   prev = () => {
-    //Sets page num - 1
-        this.setState({
-      pageNum: this.state.pageNum - 1
-
-    })
-    console.log(this.state.pageNum)
+    console.log(this.props.pageNumber)
+    this.props.decPage(1);
     const node = this.readerRef.current
     node.prevPage()
   }
@@ -116,13 +92,13 @@ class EBookReader extends PureComponent {
         //For example it may look like this https://www.dropbox.com/s/hx585jyj5vzc596/Frederick%20Douglas_Chapter%2004.mp3?dl=0
         //You have to change the end of the link to raw=1 and delete the dl=0
         return "https://www.dropbox.com/s/9464zjkkd5fz01g/Frederick%20Douglas_Chapter%2001.mp3?raw=1";
-      case 5:
+      case 11:
         return "https://www.dropbox.com/s/8x54fiopf2ckzgv/Frederick%20Douglas_Chapter%2002.mp3?raw=1";
-      case 10:
-        return "https://www.dropbox.com/s/j9lhigpk1hd8hrz/Frederick%20Douglas_Chapter%2003.mp3?raw=1";
-      case 13:
-        return "https://www.dropbox.com/s/hx585jyj5vzc596/Frederick%20Douglas_Chapter%2004.mp3?raw=1";
       case 21:
+        return "https://www.dropbox.com/s/j9lhigpk1hd8hrz/Frederick%20Douglas_Chapter%2003.mp3?raw=1";
+      case 40:
+        return "https://www.dropbox.com/s/hx585jyj5vzc596/Frederick%20Douglas_Chapter%2004.mp3?raw=1";
+      case 50:
         return "https://www.dropbox.com/s/ux0bk6r89zdtrmb/Frederick%20Douglas_Chapter%2005.mp3?raw=1";
       default:
         return 'foo';
@@ -163,9 +139,10 @@ class EBookReader extends PureComponent {
               backward: 500000
             }}
             //The src to the audio
-            src={this.renderSwitch(this.state.pageNum)}
-            onPlay={e => console.log("onPlay")}
+            src={this.renderSwitch(this.props.pageNumber)}
+            // onPlay={e => console.log("onPlay")}
             // other props here
+            
           />
       </div>
     )
