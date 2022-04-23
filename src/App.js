@@ -87,7 +87,7 @@ class App extends Component {
     // Set inital font-size, and add a pointer to rendition for later updates
     const { largeText } = this.state
     this.rendition = rendition
-    rendition.themes.fontSize('5.0vh')
+    rendition.themes.fontSize('2.5vh')
   }
   
   render() {
