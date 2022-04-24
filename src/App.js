@@ -43,6 +43,8 @@ const GlobalStyle = createGlobalStyle`
 class App extends Component {
   constructor(props) {
     super(props)
+    this.incPage = this.incPage.bind(this);
+    this.decPage = this.decPage.bind(this);
     this.state = {
       fullscreen: true,
       location:
@@ -52,9 +54,21 @@ class App extends Component {
       localFile: null,
       localName: null,
       largeText: false, 
-      pageNum: 1
+      pageNumber: 1
     }
     this.rendition = null
+  }
+
+  incPage(num) {
+    this.setState({
+      pageNumber: this.state.pageNumber += num
+    })
+  }
+
+  decPage(num) {
+    this.setState({
+      pageNumber: this.state.pageNumber -= num
+    })
   }
 
   onLocationChanged = location => {
@@ -92,6 +106,9 @@ class App extends Component {
               <GlobalStyle />
               <ReaderContainer fullscreen={fullscreen}>
                 <EBookReader
+                  incPage={this.incPage}
+                  decPage={this.decPage}
+                  pageNumber={this.state.pageNumber}
                   url={localFile || DEMO_URL}
                   title={localName || DEMO_NAME}
                   location={location}

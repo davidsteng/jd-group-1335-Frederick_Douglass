@@ -53,17 +53,15 @@ class EBookReader extends PureComponent {
   }
 
   next = () => {
-    this.setState({
-      pageNum: this.state.pageNum + 1
-    })
+    console.log(this.props.pageNumber)
+    this.props.incPage(1);
     const node = this.readerRef.current
     node.nextPage()
   }
 
   prev = () => {
-    this.setState({
-      pageNum: this.state.pageNum - 1
-    })
+    console.log(this.props.pageNumber)
+    this.props.decPage(1);
     const node = this.readerRef.current
     node.prevPage()
   }
