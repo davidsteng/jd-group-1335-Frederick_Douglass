@@ -84,12 +84,12 @@ class EBookReader extends PureComponent {
         <div style={styles.tocArea}>
           <div style={styles.toc}>
             <Button component={Link} to="/react-reader" style={styles.homeButton}>
-              <img src={homeicon} width="40" height="40" ></img>
+              <img src={homeicon} width="100%" height="100%" ></img>
             </Button>
           </div>
           <div style={styles.toc}>
             <Button style={styles.quizButton}>
-              <img src={quizicon} width="40" height="40" ></img>
+              <img src={quizicon} width="100%" height="100%" ></img>
             </Button>
           </div>
         </div>
