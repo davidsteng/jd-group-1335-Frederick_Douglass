@@ -62,6 +62,10 @@ class EpubView extends Component {
     // console.log(this.state.visibility2)
   }
 
+  handleFeedbackClose = (e) => {
+    this.setState({feedback: !this.state.feedback})
+  }
+
   initBook() {
     const { url, tocChanged, epubInitOptions } = this.props
     this.book = new Epub(url, epubInitOptions)
@@ -285,10 +289,14 @@ class EpubView extends Component {
 
   handleAnswerClick(choice) {
     if (choice == this.state.correct_answer) {
-      console.log("Correct!")
+      this.setState({feedbackContent: "Correct!"})
+      if (this.state.feedbackContent === "Correct!") { console.log("Correct!") }
     } else {
-      console.log("Incorrect!")
+      this.setState({feedbackContent: "Incorrect!"})
+      if (this.state.feedbackContent === "Incorrect!") { console.log("Incorrect!") }
     }
+    console.log(this.state.feedbackContent)
+    this.setState({feedback: !this.state.feedback})
   }
 
   getRandomInt(min, max) {
@@ -392,11 +400,11 @@ class EpubView extends Component {
               </div>
 
           </CustomPopupBigger>
-          <CustomPopupBigger
+          <CustomPopup
             onClose={this.handleFeedbackClose}
             show={this.state.feedback}
             title={this.state.feedbackContent}>
-          </CustomPopupBigger>
+          </CustomPopup>
         </div>
 
       </div>
