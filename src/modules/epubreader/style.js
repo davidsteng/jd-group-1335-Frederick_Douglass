@@ -30,7 +30,7 @@ const EBookReaderStyles = {
   quizButton: {
       position: 'absolute',
       right: '0%',
-      bottom: '55%',
+      bottom: '0%',
     },
   reader: {
     position: 'absolute',
