@@ -259,6 +259,10 @@ class EpubView extends Component {
 
   handleQuiz() {
     this.setState({quiz: !this.state.quiz})
+    this.setState({buttonColor1: "black"})
+    this.setState({buttonColor2: "black"})
+    this.setState({buttonColor3: "black"})
+    this.setState({buttonColor4: "black"})
     var answers = this.makeAnswerArray()
     console.log(answers)
     this.setState({quiz_answers: answers})
