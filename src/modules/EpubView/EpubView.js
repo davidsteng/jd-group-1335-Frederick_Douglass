@@ -260,6 +260,7 @@ class EpubView extends Component {
   handleQuiz() {
     this.setState({quiz: !this.state.quiz})
     var answers = this.makeAnswerArray()
+    console.log(answers)
     this.setState({quiz_answers: answers})
   }
 
@@ -268,26 +269,27 @@ class EpubView extends Component {
     var answers = Array(4)
     var correct_int = this.getRandomInt(1,4)
     this.setState({correct_answer: correct_int})
+    const keys = Object.keys(TargetWords)
     if (correct_int == 1) {
-      answers[0] = this.state.highlightedWord
-      answers[1] = "Random"
-      answers[2] = "Random"
-      answers[3] = "Random"
+      answers[0] = this.state.highlightedWord.toLowerCase()
+      answers[1] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[2] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[3] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
     } else if (correct_int == 2) {
-      answers[0] = "Random"
-      answers[1] = this.state.highlightedWord
-      answers[2] = "Random"
-      answers[3] = "Random"
+      answers[0] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[1] = this.state.highlightedWord.toLowerCase()
+      answers[2] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[3] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
     } else if (correct_int == 3) {
-      answers[0] = "Random"
-      answers[1] = "Random"
-      answers[2] = this.state.highlightedWord
-      answers[3] = "Random"
+      answers[0] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[1] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[2] = this.state.highlightedWord.toLowerCase()
+      answers[3] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
     } else {
-      answers[0] = "Random"
-      answers[1] = "Random"
-      answers[2] = "Random"
-      answers[3] = this.state.highlightedWord
+      answers[0] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[1] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[2] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[3] = this.state.highlightedWord.toLowerCase()
     }
     return answers
   }
