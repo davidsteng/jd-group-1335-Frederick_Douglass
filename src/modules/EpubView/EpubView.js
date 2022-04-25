@@ -30,8 +30,13 @@ class EpubView extends Component {
       amountClicked: 0,
       quiz_answers: [],
       correct_answer: 0,
+      clicked_answer: 0,
       feedback: false,
-      feedbackContent: "Incorrect!"
+      feedbackContent: "Incorrect!",
+      buttonColor1: "black",
+      buttonColor2: "black",
+      buttonColor3: "black",
+      buttonColor4: "black",
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -288,14 +293,23 @@ class EpubView extends Component {
   }
 
   handleAnswerClick(choice) {
-    if (choice == this.state.correct_answer) {
+    if (this.state.buttonColor1 === "blue") { this.setState({buttonColor1: "black"}) }
+    if (this.state.buttonColor2 === "blue") { this.setState({buttonColor2: "black"}) }
+    if (this.state.buttonColor3 === "blue") { this.setState({buttonColor3: "black"}) }
+    if (this.state.buttonColor4 === "blue") { this.setState({buttonColor4: "black"}) }
+    if (choice == 1) { this.setState({buttonColor1: "blue"}) }
+    if (choice == 2) { this.setState({buttonColor2: "blue"}) }
+    if (choice == 3) { this.setState({buttonColor3: "blue"}) }
+    if (choice == 4) { this.setState({buttonColor4: "blue"}) }
+    this.setState({clicked_answer: choice})
+  }
+
+  handleQuizSubmit() {
+    if (this.state.clicked_answer == this.state.correct_answer) {
       this.setState({feedbackContent: "Correct!"})
-      if (this.state.feedbackContent === "Correct!") { console.log("Correct!") }
     } else {
       this.setState({feedbackContent: "Incorrect!"})
-      if (this.state.feedbackContent === "Incorrect!") { console.log("Incorrect!") }
     }
-    console.log(this.state.feedbackContent)
     this.setState({feedback: !this.state.feedback})
   }
 
@@ -364,7 +378,14 @@ class EpubView extends Component {
               </div>
 
               <div>
-                <button onClick={() => this.handleAnswerClick(1)}>
+                <style>{`
+                  .black {color: black}
+                  .blue {color: blue}
+                `}</style>
+                <button
+                  className={this.state.buttonColor1}
+                  onClick={() => this.handleAnswerClick(1)}
+                >
                   {this.state.quiz_answers[0]}
                 </button>
               </div>
@@ -374,7 +395,14 @@ class EpubView extends Component {
               </div>
 
               <div>
-                <button onClick={() => this.handleAnswerClick(2)}>
+                <style>{`
+                  .black {color: black}
+                  .blue {color: blue}
+                `}</style>
+                <button
+                  className={this.state.buttonColor2}
+                  onClick={() => this.handleAnswerClick(2)}
+                >
                   {this.state.quiz_answers[1]}
                 </button>
               </div>
@@ -384,7 +412,14 @@ class EpubView extends Component {
               </div>
 
               <div>
-                <button onClick={() => this.handleAnswerClick(3)}>
+                <style>{`
+                  .black {color: black}
+                  .blue {color: blue}
+                `}</style>
+                <button
+                  className={this.state.buttonColor3}
+                  onClick={() => this.handleAnswerClick(3)}
+                >
                   {this.state.quiz_answers[2]}
                 </button>
               </div>
@@ -394,8 +429,26 @@ class EpubView extends Component {
               </div>
 
               <div>
-                <button onClick={() => this.handleAnswerClick(4)}>
+                <style>{`
+                  .black {color: black}
+                  .blue {color: blue}
+                `}</style>
+                <button
+                  className={this.state.buttonColor4}
+                  onClick={() => this.handleAnswerClick(4)}
+                >
                   {this.state.quiz_answers[3]}
+                </button>
+              </div>
+
+              <div>
+                <style>{`
+                  .black {color: black}
+                  .blue {color: blue}
+                `}</style>
+                <button className={"black"} style={{position: 'absolute', right: 10, bottom: 10}}
+                onClick={() => this.handleQuizSubmit()}>
+                  Submit
                 </button>
               </div>
 
