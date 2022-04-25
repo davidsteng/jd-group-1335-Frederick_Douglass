@@ -183,7 +183,7 @@ class EpubView extends Component {
             this.setState({visibility2: !this.state.visibility2});
             this.setState({amountClicked: 0})
         } else {
-            this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
+            this.soundPlay("https://brainy-literacy-assets.s3.amazonaws.com/audio/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
         }
         // this.setState({visibility2: !this.state.visibility2});
         str = str[0].toUpperCase() + str.substring(1,str.length)
@@ -339,19 +339,19 @@ class EpubView extends Component {
               <div style={styles.container}>
                 <h2 style={styles.title}>{this.state.highlightedWord}</h2>
                 <button style={styles.button} onClick={() => this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+this.state.highlightedWord.toLowerCase().charAt(0)+"/"+ this.state.highlightedWord.toLowerCase()+ ".mp3")}>
-                  <img src={audio} width="40" height="40" ></img>
+                  <img src={audio} width="20" height="20" ></img>
                 </button> 
 
                 <button style={styles.button} onClick={this.handleQuiz}>
-                  <img src={quiz} width="40" height="40" ></img>
+                  <img src={quiz} width="20" height="20" ></img>
                 </button> 
               </div>
               
-              <h2 style={{marginLeft: '10px'}}>{this.state.wordDerivs}</h2>
+              <h2 style={{marginLeft: '20px'}}>{this.state.wordDerivs}</h2>
               <div style={styles.container}>
                 <h2 style={styles.defintion}> {this.state.wordDef}</h2>
                 <button style={styles.button} onClick={() => this.soundPlay("https://brainy-literacy-assets.s3.amazonaws.com/audio/defs/"+this.state.highlightedWord.toUpperCase().charAt(0)+"/"+ this.state.highlightedWord.toLowerCase()+ "%2B.mp3")}>
-                  <img src={audio} width="40" height="40" ></img>
+                  <img src={audio} width="20" height="20" ></img>
                 </button> 
                 
               </div>
