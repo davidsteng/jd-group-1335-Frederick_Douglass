@@ -24,13 +24,13 @@ const EBookReaderStyles = {
   },
   homeButton: {
     position: 'absolute',
-    right: 50,
-    top: 10,
+    right: '0%',
+    top: '0%',
   },
   quizButton: {
       position: 'absolute',
-      right: 50,
-      bottom: 400,
+      right: '0%',
+      bottom: '0%',
     },
   reader: {
     position: 'absolute',
@@ -87,7 +87,7 @@ const EBookReaderStyles = {
     bottom: 0,
     zIndex: 0,
     width: 225,
-    height: '83.3%',
+    height: '84.33%',
     overflowY: 'auto',
     WebkitOverflowScrolling: 'touch',
     background: '#f2f2f2',

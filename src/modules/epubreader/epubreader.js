@@ -43,7 +43,7 @@ class EBookReader extends PureComponent {
     this.readerRef = React.createRef()
     this.state = {
       expandedToc: false,
-      toc: false
+      toc: false,
     }
   }
   toggleToc = () => {
@@ -53,11 +53,15 @@ class EBookReader extends PureComponent {
   }
 
   next = () => {
+    console.log(this.props.pageNumber)
+    this.props.incPage(1);
     const node = this.readerRef.current
     node.nextPage()
   }
 
   prev = () => {
+    console.log(this.props.pageNumber)
+    this.props.decPage(1);
     const node = this.readerRef.current
     node.prevPage()
   }
@@ -80,12 +84,12 @@ class EBookReader extends PureComponent {
         <div style={styles.tocArea}>
           <div style={styles.toc}>
             <Button component={Link} to="/react-reader" style={styles.homeButton}>
-              <img src={homeicon} width="40" height="40" ></img>
+              <img src={homeicon} width="100%" height="100%" ></img>
             </Button>
           </div>
           <div style={styles.toc}>
             <Button style={styles.quizButton}>
-              <img src={quizicon} width="40" height="40" ></img>
+              <img src={quizicon} width="100%" height="100%" ></img>
             </Button>
           </div>
         </div>
