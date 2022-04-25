@@ -265,31 +265,35 @@ class EpubView extends Component {
   }
 
   makeAnswerArray() {
-    var answer = this.state.highlightedWord
+    var answer = this.state.highlightedWord.toLowerCase()
     var answers = Array(4)
     var correct_int = this.getRandomInt(1,4)
     this.setState({correct_answer: correct_int})
     const keys = Object.keys(TargetWords)
+    keys.sort(function(a, b) { return a.localeCompare(b) })
+    const range = this.getStartAndEndIndices(answer , keys)
+    console.log(range)
+    console.log(keys[range[0]])
     if (correct_int == 1) {
-      answers[0] = this.state.highlightedWord.toLowerCase()
-      answers[1] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[2] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[3] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[0] = answer
+      answers[1] = keys[this.getRandomInt(range[0], range[1])]
+      answers[2] = keys[this.getRandomInt(range[0], range[1])]
+      answers[3] = keys[this.getRandomInt(range[0], range[1])]
     } else if (correct_int == 2) {
-      answers[0] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[1] = this.state.highlightedWord.toLowerCase()
-      answers[2] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[3] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[0] = keys[this.getRandomInt(range[0], range[1])]
+      answers[1] = answer
+      answers[2] = keys[this.getRandomInt(range[0], range[1])]
+      answers[3] = keys[this.getRandomInt(range[0], range[1])]
     } else if (correct_int == 3) {
-      answers[0] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[1] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[2] = this.state.highlightedWord.toLowerCase()
-      answers[3] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
+      answers[0] = keys[this.getRandomInt(range[0], range[1])]
+      answers[1] = keys[this.getRandomInt(range[0], range[1])]
+      answers[2] = answer
+      answers[3] = keys[this.getRandomInt(range[0], range[1])]
     } else {
-      answers[0] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[1] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[2] = keys[this.getRandomInt(0, Object.keys(TargetWords).length - 1)]
-      answers[3] = this.state.highlightedWord.toLowerCase()
+      answers[0] = keys[this.getRandomInt(range[0], range[1])]
+      answers[1] = keys[this.getRandomInt(range[0], range[1])]
+      answers[2] = keys[this.getRandomInt(range[0], range[1])]
+      answers[3] = answer
     }
     return answers
   }
@@ -321,6 +325,24 @@ class EpubView extends Component {
     return Math.floor(Math.random() * (max - min) + min)
   }
 
+  // gets the location of words that start with correct answer
+  getStartAndEndIndices(correct_answer, words) {
+    var start = -1
+    var end = -1
+    for (var i = 0; i < words.length; i++) {
+      if (start < 0) {
+        if (words[i][0] == correct_answer[0]) {
+          start = i
+        }
+      } else {
+        if (words[i][0] != correct_answer[0]) {
+          end = i
+          break;
+        }
+      }
+    }
+    return [start, end]
+  }
 
   render() {
     const { isLoaded } = this.state
