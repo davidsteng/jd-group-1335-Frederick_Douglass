@@ -5,6 +5,21 @@ an audio reader. To improve on user literacy and comprehension our final deliver
 
 # Relase Notes
 
+## Version 1.0
+
+### Features
+   - Quiz functionality updated to pull answer choices beginning with the same letter as the word quizzed
+
+### Bug Fixes
+   - Clicking on words for the first time now correctly plays audio for the word by accessing the AWS for all words currently in the database
+   - Target Word user interface updated to increase font size and enhance readability
+   - User interface for quiz screen and target word pop up fixed to not include a scroll bar
+   - Audio splicing fixed: previously certain sections of the audio were of incorrect length leading to blank audio
+
+### Known Issues
+   - Clicking on a word multiple times will lead to overlap of audio playing
+   - Certain words that are in the ebook do not have a related audio file in the directory
+
 ## Version 0.1.0
 
 ### Features
@@ -22,21 +37,20 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Clicking on a word in the novel does not properly return word information for loading audio and definition
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
 
-## Version 0.2.0
+## Version 0.4.0
 
 ### Features
-   - Home screen reorganized into two portions: The Narrative of the Life of Frederick Douglas and the background
-   - Biography and gallery added to the background portion of the book
-   - Words are able to be clicked on and recognized within the text
-   - Clicking on words brings up a popup with the word definition
-   - Chapter buttons added to map respective chapters for navigation through the novel
+   - Clicking on the question mark within a target words pop-up screen now opens up the quiz screen
+   - The quiz screen provides the user with the definiiton of the word they selected, the correct answer, and options to submit
 
 ### Bug Fixes
-   - Image sources changed to correctly link to general folder within src to be properly accessed
-   - Changed the font and image sizes to be in respect to a portion of the screen size allowing text to properly load on larger and smaller screens
+   - Additional words added to the csv file which contain all words and definitions
+   - Word aspect ratio of pages fixed and remaining audio files parsed and uploaded to the deliverable
 
 ### Known Issues
-   - Not all word definitions are loaded into the system due to late access to Part 1 definitions
+   - Clicking on a word in the text should pause the audio reading of the chapter
+   - Gold and Silver stars should be correctly formatted onto thee quiz screen instead of overlapping
+   - Quiz screen UI can be improved to be more streamlined for user experience
 
 ## Version 0.3.0
 
@@ -56,20 +70,18 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Words are formatted differently on screens with different aspect ratio - potential fix is to scale ereader width off a factor of the height
    - Clicking on a word in the text should pause the audio reading of the chapter
 
-## Version 0.4.0
+## Version 0.2.0
 
 ### Features
-   - Clicking on the question mark within a target words pop-up screen now opens up the quiz screen
-   - The quiz screen provides the user with the definiiton of the word they selected and four words beginning with the same letter as answer options
-   - Correct answer provides the user with 1 gold star incorrect answers turn all gold star silver
-   - Five gold stars in a row master a word
-   - Mastered words cannot lose gold stars even if questions are answered incorrectly
+   - Home screen reorganized into two portions: The Narrative of the Life of Frederick Douglas and the background
+   - Biography and gallery added to the background portion of the book
+   - Words are able to be clicked on and recognized within the text
+   - Clicking on words brings up a popup with the word definition
+   - Chapter buttons added to map respective chapters for navigation through the novel
 
 ### Bug Fixes
-   - Additional words added to the csv file which contain all words and definitions
-   - Word aspect ratio of pages fixed and remaining audio files parsed and uploaded to the deliverable
+   - Image sources changed to correctly link to general folder within src to be properly accessed
+   - Changed the font and image sizes to be in respect to a portion of the screen size allowing text to properly load on larger and smaller screens
 
 ### Known Issues
-   - Clicking on a word in the text should pause the audio reading of the chapter
-   - Gold and Silver stars should be correctly formatted onto thee quiz screen instead of overlapping
-   - Quiz screen UI can be improved to be more streamlined for user experience
+   - Not all word definitions are loaded into the system due to late access to Part 1 definitions
