@@ -24,6 +24,8 @@
   .popup h2 {
     margin-top: 0;
     color: #333;
+    line-height: 1.6;
+    font-size: 150%;
     font-family: Tahoma, Arial, sans-serif;
     font-weight: normal;
   }
@@ -42,7 +44,7 @@
     color: #000;
   }
   .popup .content {
-    max-height: 30%;
+    max-height: 100%;
     overflow: auto;
     font-weight: normal;
   }
