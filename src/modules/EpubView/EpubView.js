@@ -23,6 +23,8 @@ class EpubView extends Component {
       quiz: false,
       highlightedWord: "",
       wordDerivs: " ",
+      derivative_words_list: [],
+      wordDerivsLen: 0,
       wordDef: "",
       visibility2: false,
       highlightedWord2: "",
@@ -37,6 +39,7 @@ class EpubView extends Component {
       buttonColor2: "black",
       buttonColor3: "black",
       buttonColor4: "black",
+      questionNumber: 1,
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -259,13 +262,16 @@ class EpubView extends Component {
 
   handleQuiz() {
     this.setState({quiz: !this.state.quiz})
-    this.setState({buttonColor1: "black"})
-    this.setState({buttonColor2: "black"})
-    this.setState({buttonColor3: "black"})
-    this.setState({buttonColor4: "black"})
+
+    const derivative_words = this.state.wordDerivs.substring(2, this.state.wordDerivs.length - 1).split(", ")
+    this.setState({derivative_words_list: derivative_words})
+    this.setState({wordDerivsLen: derivative_words.length})
+    console.log(derivative_words)
+
     var answers = this.makeAnswerArray()
-    console.log(answers)
     this.setState({quiz_answers: answers})
+
+    this.setState({questionNumber: 1})
   }
 
   makeAnswerArray() {
@@ -299,6 +305,11 @@ class EpubView extends Component {
       answers[2] = keys[this.getRandomInt(range[0], range[1])]
       answers[3] = answer
     }
+    this.setState({buttonColor1: "black"})
+    this.setState({buttonColor2: "black"})
+    this.setState({buttonColor3: "black"})
+    this.setState({buttonColor4: "black"})
+
     return answers
   }
 
@@ -321,6 +332,14 @@ class EpubView extends Component {
       this.setState({feedbackContent: "Incorrect!"})
     }
     this.setState({feedback: !this.state.feedback})
+
+    if (this.state.questionNumber < this.state.wordDerivsLen) {
+      this.setState({questionNumber: this.state.questionNumber + 1})
+    }
+
+    this.setState({highlightedWord: this.state.derivative_words_list[this.state.questionNumber - 1]})
+    var newAnswers = this.makeAnswerArray()
+    this.setState({quiz_answers: newAnswers})
   }
 
   getRandomInt(min, max) {
@@ -476,7 +495,7 @@ class EpubView extends Component {
                 `}</style>
                 <button className={"black"} style={{position: 'absolute', right: 10, bottom: 10}}
                 onClick={() => this.handleQuizSubmit()}>
-                  Submit
+                  Next
                 </button>
               </div>
 
