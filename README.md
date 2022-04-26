@@ -3,6 +3,38 @@ Project HearATale aims to create a web based application designed to help below 
 Our team aims to create a web based e-reader through javascript, html, and react that allows the user to read the Narrative of the Life of Frederick Douglas while supported by
 an audio reader. To improve on user literacy and comprehension our final deliverable aims to provide user word pronounciation, word definitions, and word quizzes.
 
+# Installation Guide
+The following instillation guide provides a brief overview and walkthrough on how the application may be installed on a user device.
+Plase note that instillation may require different steps when this application is being hosted onto a server.
+
+### Pre-Requisites
+   - NodeJS must be installed and configured before proceeding to use the application. 
+   - Use the link for instillation of NodeJS: https://nodejs.org/en/download/ 
+   - A detailed help guide for NodeJS configuration can be found at: https://nodejs.org/en/docs/
+
+### Dependencies
+   - Two dependecies must be installed for this application to be able to run
+   - Both commands can be entered in command prompt or the powershell terminal in the file directory of the application: 
+   - ```npm install```
+   - ```npm i react-h5-audio-player --force```
+
+### Download Instructions
+   - You can download the application files from this github repository or this link: https://github.com/davidsteng/jd-group-1335/download_zip
+   - Extract the contents of the zip file into a seperate folder where the application will run from
+
+### Build Instructions
+   - No build necessary for this application
+
+### Application Installation
+   - Once the application is downloaded, make sure you install the two dependencies in the command promp within the file directory of the app folder
+
+### Run Instructions
+   - Once the dependencies have been installed, while remaining in the same directory, run the following command through the terminal: ```npm start```
+
+### Troubleshooting
+   - If you run into any issues regarding the dependencies not installing correctly, you can try putting ```--force``` after the two prompts listed above and it should install
+   - If ```npm install``` is giving some errors, it is completely normal. The application will still run smoothly, just type in ```npm start```
+
 # Relase Notes
 
 ## Version 1.0
@@ -90,29 +122,3 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Clicking on a word in the novel does not properly return word information for loading audio and definition
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
 
-# Installation Guide
-
-### Pre-Requisites
-   - You must have NodeJS installed and configured before proceeding to use the application. Use the link: https://nodejs.org/en/download/ .
-
-### Dependencies
-   - You must install two dependecies for this application to be able to run
-   - Both commands can be entered in the command prompt in the file directory of the app: 
-   - ```npm install``` 
-   - ```npm i react-h5-audio-player --force```
-
-### Download Instructions
-   - You can download the application files from this github repository or this link: https://github.com/davidsteng/jd-group-1335/download_zip
-
-### Build Instructions
-   - No build necessary for this application
-
-### Application Installation
-   - Once the application is downloaded, make sure you install the two dependencies in the command promp within the file directory of the app folder
-
-### Run Instructions
-   - Once the dependencies have been installed, you will enter a prompt within the command promp again: ```npm start```
-
-### Troubleshooting
-   - If you run into any issues regarding the dependencies not installing correctly, you can try putting ```--force``` after the two prompts listed above and it should install
-   - If ```npm install``` is giving some errors, it is completely normal. The application should still run smoothly, just type in ```npm start```
