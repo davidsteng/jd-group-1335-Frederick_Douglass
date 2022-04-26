@@ -97,7 +97,9 @@ an audio reader. To improve on user literacy and comprehension our final deliver
 
 ### Dependencies
    - You must install two dependecies for this application to be able to run
-   - Both commands can be entered in the command prompt in the file directory of the app: npm install AND npm i react-h5-audio-player --force
+   - Both commands can be entered in the command prompt in the file directory of the app: 
+   - ```npm install``` 
+   - ```npm i react-h5-audio-player --force```
 
 ### Download Instructions
    - You can download the application files from this github repository or this link: https://github.com/davidsteng/jd-group-1335/download_zip
