@@ -89,3 +89,8 @@ an audio reader. To improve on user literacy and comprehension our final deliver
 ### Known Issues
    - Clicking on a word in the novel does not properly return word information for loading audio and definition
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
+
+### Install Guide
+
+### Pre-Requisites
+   - You will need to install node on your machine to allow this application to run. You can install node by following this link and downloading the installer for your machine you will be running the application on:  https://nodejs.org/en/download/
