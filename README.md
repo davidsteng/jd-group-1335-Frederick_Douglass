@@ -96,20 +96,20 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - You must have NodeJS installed and configured before proceeding to use the application. Use the link: https://nodejs.org/en/download/ .
 
 ### Dependencies
-	- You must install two dependecies for this application to be able to run
-	- Both commands can be entered in the command prompt: npm install AND npm i react-h5-audio-player --force
-	
+   - You must install two dependecies for this application to be able to run
+   - Both commands can be entered in the command prompt in the file directory of the app: npm install AND npm i react-h5-audio-player --force
+
 ### Download Instructions
-	- You can download the application files from this github repository or this link: https://github.com/davidsteng/jd-group-1335/download_zip
-	
+   - You can download the application files from this github repository or this link: https://github.com/davidsteng/jd-group-1335/download_zip
+
 ### Build Instructions
-	- No build necessary for this application
-	
+   - No build necessary for this application
+
 ### Application Installation
-	- Once the application is downloaded, make sure you install the two dependencies in the command promp within the file directory of the app folder
-	
+   - Once the application is downloaded, make sure you install the two dependencies in the command promp within the file directory of the app folder
+
 ### Run Instructions
-	- Once the dependencies have been installed, you will enter a prompt within the command promp again: npm start
-	
+   - Once the dependencies have been installed, you will enter a prompt within the command promp again: npm start
+
 ### Troubleshooting
--If you run into any issues such as the dependencies not installing correctly, you can try putting --force after the two prompts listed above and it should install it
+   - If you run into any issues such as the dependencies not installing correctly, you can try putting --force after the two prompts listed above and it should install
