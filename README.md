@@ -20,23 +20,6 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Clicking on a word multiple times will lead to overlap of audio playing
    - Certain words that are in the ebook do not have a related audio file in the directory
 
-## Version 0.1.0
-
-### Features
-   - Home screen added to application
-   - Preface of novel added
-   - Letter from Wendell Phillips added
-   - Pages of novel seperated to end on paragraph when possible
-   - Side bar selection added to include return to home page and start quiz button
-
-### Bug Fixes
-   - Table of Contents removed to be reimplemented on right side of application window
-   - Bug regarding buttons not working to jump to chapter start fixed
-
-### Known Issues
-   - Clicking on a word in the novel does not properly return word information for loading audio and definition
-   - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
-
 ## Version 0.4.0
 
 ### Features
@@ -85,3 +68,20 @@ an audio reader. To improve on user literacy and comprehension our final deliver
 
 ### Known Issues
    - Not all word definitions are loaded into the system due to late access to Part 1 definitions
+
+## Version 0.1.0
+
+### Features
+   - Home screen added to application
+   - Preface of novel added
+   - Letter from Wendell Phillips added
+   - Pages of novel seperated to end on paragraph when possible
+   - Side bar selection added to include return to home page and start quiz button
+
+### Bug Fixes
+   - Table of Contents removed to be reimplemented on right side of application window
+   - Bug regarding buttons not working to jump to chapter start fixed
+
+### Known Issues
+   - Clicking on a word in the novel does not properly return word information for loading audio and definition
+   - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
