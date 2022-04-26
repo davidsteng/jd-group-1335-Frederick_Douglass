@@ -111,7 +111,8 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Once the application is downloaded, make sure you install the two dependencies in the command promp within the file directory of the app folder
 
 ### Run Instructions
-   - Once the dependencies have been installed, you will enter a prompt within the command promp again: npm start
+   - Once the dependencies have been installed, you will enter a prompt within the command promp again: ```npm start```
 
 ### Troubleshooting
-   - If you run into any issues such as the dependencies not installing correctly, you can try putting --force after the two prompts listed above and it should install
+   - If you run into any issues regarding the dependencies not installing correctly, you can try putting ```--force``` after the two prompts listed above and it should install
+   - If ```npm install``` is giving some errors, it is completely normal. The application should still run smoothly, just type in ```npm start```
