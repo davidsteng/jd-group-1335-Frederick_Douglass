@@ -91,6 +91,19 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
 
 ### Install Guide
+Install Guide HearATale 1.0
+	PRE-REQUISITES
+You must have NodeJS installed and configured before proceeding. Use the link: https://nodejs.org/en/download/ .
+	DEPENDENCIES
+		
+	DOWNLOAD
+		https://github.com/davidsteng/jd-group-1335/download_zip
+	BUILD
+		No build necessary for this application
+	INSTALLATION
+		 
+	RUNNING APPLICATION
+		Launch a terminal window locally and 
 
 ### Pre-Requisites
    - You will need to install node on your machine to allow this application to run. You can install node by following this link and downloading the installer for your machine you will be running the application on:  https://nodejs.org/en/download/
