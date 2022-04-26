@@ -220,7 +220,7 @@ class EpubView extends Component {
             this.setState({visibility: !this.state.visibility});
             this.setState({amountClicked: 0})
         } else {
-            this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
+            this.soundPlay("https://brainy-literacy-assets.s3.amazonaws.com/audio/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
         }
         // this.setState({visibility: !this.state.visibility});
         str = str[0].toUpperCase() + str.substring(1,str.length)
@@ -240,7 +240,7 @@ class EpubView extends Component {
               this.setState({visibility: !this.state.visibility});
               this.setState({amountClicked: 0})
           } else {
-            this.soundPlay("https://words-and-definitons.s3.amazonaws.com/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
+            this.soundPlay("https://brainy-literacy-assets.s3.amazonaws.com/audio/words/"+word.toLowerCase().charAt(0)+"/"+ word.toLowerCase() + ".mp3")
           }
           // this.setState({visibility: !this.state.visibility});
           str = str[0].toUpperCase() + str.substring(1,str.length)
