@@ -15,6 +15,10 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Target Word user interface updated to increase font size and enhance readability
    - User interface for quiz screen and target word pop up fixed to not include a scroll bar
    - Audio splicing fixed: previously certain sections of the audio were of incorrect length leading to blank audio
+   - Page number is now saved so when the user exits the eReader to the background that variable is saved and not re-initialized
+   - Added all of the sightwords and target words with seaparated names
+   - Reformatted and added to gallery page per client request
+   - Fixed formatting and sizing of buttons of the side bar in the eReader
 
 ### Known Issues
    - Clicking on a word multiple times will lead to overlap of audio playing
