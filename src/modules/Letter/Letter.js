@@ -6,7 +6,7 @@ import homeicon from '../../assets/homeicon.png'
 
 const Letter = () => {
     return (
-        <div style={{backgroundColor: 'gainsboro',  margin: 20, fontSize: '8.0vh'}}>
+        <div style={{backgroundColor: 'white',  margin: 20, fontSize: '120%'}}>
             <h1
             style={{textAlign: 'center'}}
             >LETTER FROM WENDELL PHILLIPS, ESQ.</h1>
