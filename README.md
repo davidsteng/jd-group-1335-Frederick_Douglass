@@ -90,7 +90,7 @@ an audio reader. To improve on user literacy and comprehension our final deliver
    - Clicking on a word in the novel does not properly return word information for loading audio and definition
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
 
-### Installation Guide
+# Installation Guide
 
 ### Pre-Requisites
    - You must have NodeJS installed and configured before proceeding to use the application. Use the link: https://nodejs.org/en/download/ .
