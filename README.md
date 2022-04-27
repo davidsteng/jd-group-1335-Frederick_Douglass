@@ -122,7 +122,7 @@ Plase note that instillation may require different steps when this application i
    - Clicking on a word in the novel does not properly return word information for loading audio and definition
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
 
-# Information for Future Implementation
+# Useful Information for Future Implementation
 
 ## Audio for Words/Definitions
 
