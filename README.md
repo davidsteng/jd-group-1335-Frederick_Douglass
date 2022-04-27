@@ -132,7 +132,9 @@ Plase note that instillation may require different steps when this application i
 
 ## Audio per Page + Text Consistency across Different Screen Sizes
 ### Issue
-   - The page by page audio used is only 
-   - //More in depth information
+   - The page by page audio used is only consistent with one screen size currently
+   - The way the page by page audio is implemented is there is a switch statment in epubreader.js line 75 that will depending on the page number pull a link of an audio file stored in a folder in our dropbox (instead of dl=0 at the end of url, we changed it to raw=1)
 
 ## Quiz and Star Data
+   - Star data is not displayed on the quiz screen and the formatting of the quiz is off
+   - //More info on the where to find star data
