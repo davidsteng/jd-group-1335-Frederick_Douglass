@@ -137,4 +137,7 @@ Plase note that instillation may require different steps when this application i
 
 ## Quiz and Star Data
    - Star data is not displayed on the quiz screen and the formatting of the quiz is off
-   - //More info on the where to find star data
+   - Currently the star data is stored in a dictionary as a state variable in EpubView.js
+   - Everytime this dictionary is updated(onQuizSubmit()), it is displayed on the console. See the console for how the information is stored.
+   - Quiz and star data needs to be transferred from being a state variable to the actual AWS database.
+   - Star data needs to be displayed on the quiz screen whenever the quiz feature for a word is clicked.
