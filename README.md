@@ -122,10 +122,17 @@ Plase note that instillation may require different steps when this application i
    - Clicking on a word in the novel does not properly return word information for loading audio and definition
    - Window and text is scaled to font not percent of screen leading to small text and icons on larger monitors
 
+
 # Useful Information for Future Implementation
 
 ## Audio for Words/Definitions
+### Issue
+   - Not all words have their respective audio due to it not being present in the AWS database
+   - //More in depth information
 
 ## Audio per Page + Text Consistency across Different Screen Sizes
+### Issue
+   - The page by page audio used is only 
+   - //More in depth information
 
 ## Quiz and Star Data
