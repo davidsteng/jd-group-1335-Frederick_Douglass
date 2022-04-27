@@ -40,6 +40,7 @@ class EpubView extends Component {
       buttonColor3: "black",
       buttonColor4: "black",
       questionNumber: 1,
+      wordStars: {}
     }
     this.viewerRef = React.createRef()
     this.location = props.location
@@ -263,10 +264,14 @@ class EpubView extends Component {
   handleQuiz() {
     this.setState({quiz: !this.state.quiz})
 
+    if (!this.state.wordStars.hasOwnProperty(this.state.highlightedWord.toLowerCase())) {
+      var currWordStars = this.state.wordStars
+      currWordStars[this.state.highlightedWord.toLowerCase()] = {"gold": 0, "silver": 5}
+    }
+
     const derivative_words = this.state.wordDerivs.substring(2, this.state.wordDerivs.length - 1).split(", ")
     this.setState({derivative_words_list: derivative_words})
     this.setState({wordDerivsLen: derivative_words.length})
-    console.log(derivative_words)
 
     var answers = this.makeAnswerArray()
     this.setState({quiz_answers: answers})
@@ -282,8 +287,6 @@ class EpubView extends Component {
     const keys = Object.keys(TargetWords)
     keys.sort(function(a, b) { return a.localeCompare(b) })
     const range = this.getStartAndEndIndices(answer , keys)
-    console.log(range)
-    console.log(keys[range[0]])
     if (correct_int == 1) {
       answers[0] = answer
       answers[1] = keys[this.getRandomInt(range[0], range[1])]
@@ -328,18 +331,38 @@ class EpubView extends Component {
   handleQuizSubmit() {
     if (this.state.clicked_answer == this.state.correct_answer) {
       this.setState({feedbackContent: "Correct!"})
+      this.updateStars(this.state.highlightedWord.toLowerCase(), 1)
     } else {
       this.setState({feedbackContent: "Incorrect!"})
+      this.updateStars(this.state.highlightedWord.toLowerCase(), 0)
     }
+    console.log(this.state.wordStars)
+
     this.setState({feedback: !this.state.feedback})
 
     if (this.state.questionNumber < this.state.wordDerivsLen) {
       this.setState({questionNumber: this.state.questionNumber + 1})
     }
 
-    this.setState({highlightedWord: this.state.derivative_words_list[this.state.questionNumber - 1]})
+    // this.setState({highlightedWord: this.state.derivative_words_list[this.state.questionNumber - 1]})
     var newAnswers = this.makeAnswerArray()
     this.setState({quiz_answers: newAnswers})
+  }
+
+  updateStars(word, feedback) {
+    var currWordStars = this.state.wordStars
+    if (feedback > 0) {
+      if (currWordStars[word]["gold"] < 5) {
+        currWordStars[word]["gold"] = currWordStars[word]["gold"] + 1
+      }
+      if (currWordStars[word]["silver"] > 0) {
+        currWordStars[word]["silver"] = currWordStars[word]["silver"] - 1
+      }
+    } else {
+      const newSilverCount = Math.max(currWordStars[word]["gold"], currWordStars[word]["silver"])
+      currWordStars[word]["gold"] = 0
+      currWordStars[word]["silver"] = newSilverCount
+    }
   }
 
   getRandomInt(min, max) {
