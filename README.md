@@ -127,14 +127,18 @@ Plase note that instillation may require different steps when this application i
 
 ## Audio for Words/Definitions
 ### Issue
-   - Not all words have their respective audio due to it not being present in the AWS database
-   - //More in depth information
+   - Not all words have their respective audio linked correctly due to the file not being present within the AWS database
+   - Clicking on a word for the first time should bring up word audio: for certain words this instead results in a linkage error where no audio is played
+   - This issue can be solved by recording and adding the missing files to the AWS using the same url / filing convention as other target words and definitions
 
 ## Audio per Page + Text Consistency across Different Screen Sizes
-   - The page by page audio used is only consistent with one screen size currently
+   - The page by page audio used is only consistent with one screen size resolution currently
+   - Currently the width and height of the container text is displayed is a percentage of the vh and vw of the users device and browser
+   - This causes words to fit differently depending on how the resolution and window size changes
    - The way the page by page audio is implemented is there is a switch statment in epubreader.js line 75 that will depending on the page number pull a link of an audio file stored in a folder in our dropbox (instead of dl=0 at the end of url, we changed it to raw=1)
    - Once a consistent text solution across different display screen resolutions has been found, the audio may have to be re-spliced appropriately and uploaded to dropbox or the AWS database
    - Then, all the links within the switch statements will have to be updated with the updated audio file links from dropbox or the AWS database (don't forget to change the end of the links from dl=0 to raw=1)
+   - One potential solution is to make the windows a constant size instead of based on a percentage, however this may cause issues with mobile users
 
 ## Quiz and Star Data
    - Star data is not displayed on the quiz screen and the formatting of the quiz is off
